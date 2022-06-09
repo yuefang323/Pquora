@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 from app.models import db, Question, Answer, Tag
 from app.forms import NewQuestionForm, EditQuestionForm
 from app.models.answer import Answer
+from datetime import datetime
 
 question_routes = Blueprint('questions', __name__)
 
@@ -33,7 +34,6 @@ def new_question():
     Create a new question
     """
     form = NewQuestionForm()
-    print("........", form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user_id = current_user.id
@@ -57,30 +57,50 @@ def edit_question(question_id):
     if request.method == "GET":
         question = Question.query.get(question_id)
         answers = Answer.query.filter(Answer.question_id == question_id).all()
-
-        return {
-            "question": question.to_dict(),
-            "answers": [answer.to_dict() for answer in answers],
-        }
+        if question: 
+            return {
+                "question": question.to_dict(),
+                "answers": [answer.to_dict() for answer in answers],
+            }
+        return {"errors": "Question not found"}
 
     if request.method == "PUT":
         form = EditQuestionForm()
         form['csrf_token'].data = request.cookies['csrf_token']
+        
         if form.validate_on_submit():
             question = Question.query.get(question_id)
-            question.content = form.data["content"]
-            question.tag_id = form.data["tag_id"]
-            if form.data["owner_id"]:
-                question.owner_id = form.data["owner_id"]
+            if question.owner_id == current_user.id:
+                question.content = form.data["content"]
+                question.tag_id = form.data["tag_id"]
+                # question.updated_at = form.data["updated_at"].datetime.now()
             
-            db.session.commit()
+                db.session.commit()
 
-            return {"question": question.to_dict()}
-
+                return {"question": question.to_dict()}
+            
+            return {'errors': "You are not the owner of this question."}, 401
+            
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-    return {"errors": "invalid method"}
+    return {"errors": "Invalid method"}
 
 # Delete a question 
+@question_routes.route("/<int:question_id>", methods=["DELETE"])
+@login_required
+def delete_question(question_id):
 
+    question = Question.query.get(question_id)
+    
+    if question: 
+        if question.owner_id == current_user.id:
+
+            db.session.delete(question)
+            db.session.commit()
+            
+            return {
+                "message": f"Question {question_id} was deleted successfully"
+            }
+
+    return {'errors': ["You are not the owner of this question."]}, 401
 

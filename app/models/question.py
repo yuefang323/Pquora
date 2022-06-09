@@ -9,7 +9,7 @@ class Question(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     tag_id = db.Column(db.Integer, db.ForeignKey("tags.id"))
     created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
-    updated_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now(), onupdate=datetime.now)
 
     # Question-to-User: many-to-one
     user = db.relationship("User", back_populates="questions")
