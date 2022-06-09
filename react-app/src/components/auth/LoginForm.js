@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { login } from "../../store/session";
 
+import bg from "../../assets/login-bg.jpeg"
+
 const LoginForm = () => {
     const [errors, setErrors] = useState([]);
     const [email, setEmail] = useState("");
@@ -39,7 +41,7 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="login-background">
+        <div className="splash-login-background" style={{ backgroundImage: `url("${bg}")`}}>
             <div className="login-form-container">
                 <form onSubmit={onLogin}>
                     <div>

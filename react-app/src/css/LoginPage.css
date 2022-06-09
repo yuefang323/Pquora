@@ -1,0 +1,12 @@
+.splash-login-background,
+.signup-wrapper {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	z-index: -100;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100vw;
+	background-color: var(--yellow2);
+}
