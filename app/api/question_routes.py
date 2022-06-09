@@ -64,21 +64,20 @@ def edit_question(question_id):
         return {"errors": "Question not found"}
 
     if request.method == "PUT":
+        question = Question.query.get(question_id)
+        if question.owner_id != current_user.id:
+            return {'errors': "You are not the owner of this question."}, 418
+        
         form = EditQuestionForm()
         form['csrf_token'].data = request.cookies['csrf_token']
-        
         if form.validate_on_submit():
-            question = Question.query.get(question_id)
-            if question.owner_id == current_user.id:
-                question.content = form.data["content"]
-                question.tag_id = form.data["tag_id"]
+            question.content = form.data["content"]
+            question.tag_id = form.data["tag_id"]
             
-                db.session.commit()
+            db.session.commit()
 
-                return {"question": question.to_dict()}
-            
-            return {'errors': "You are not the owner of this question."}, 401
-            
+            return {"question": question.to_dict()}
+                
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
     return {"errors": "Invalid method"}
