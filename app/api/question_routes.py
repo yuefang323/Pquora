@@ -3,7 +3,6 @@ from flask_login import current_user, login_required
 from app.models import db, Question, Answer, Tag
 from app.forms import NewQuestionForm, EditQuestionForm
 from app.models.answer import Answer
-from datetime import datetime
 
 question_routes = Blueprint('questions', __name__)
 
@@ -73,7 +72,6 @@ def edit_question(question_id):
             if question.owner_id == current_user.id:
                 question.content = form.data["content"]
                 question.tag_id = form.data["tag_id"]
-                # question.updated_at = form.data["updated_at"].datetime.now()
             
                 db.session.commit()
 
