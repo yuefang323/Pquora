@@ -24,10 +24,10 @@ const SplashPage = () => {
 
     return (
         <div className="splash" style={{ backgroundImage: `url("${bg}")` }}>
-            <nav className="splash-nav-bar">
-                {/* <NavLink to="/" className="logo">
+            {/* <nav className="splash-nav-bar">
+                <NavLink to="/" className="logo">
 					<img src={logo} alt="pQuora" />
-				</NavLink> */}
+				</NavLink>
                 <div className="splash-session-links">
                     <NavLink className="btn" exact to="/about">
                         About Us
@@ -42,25 +42,23 @@ const SplashPage = () => {
                         Sign Up
                     </NavLink>
                 </div>
-            </nav>
+            </nav> */}
             {errors && errors.map((error) => <div>{error}</div>)}
             <main>
                 <div className="splash-wrapper">
-                    <div className="splash-title-wrap">
-                        <div className="splash-title">
-                            <h1 className="app-title">pQuora</h1>
-                            <h2 className="app-description">
-                                A place to share knowledge and better understand
-                                of infants
-                            </h2>
-                        </div>
-                        <div className="main-session-forms">
-                            <div className="signup-form">
+                    <div className="splash-title-wrapper">
+                        <h3 className="app-title">pQuora</h3>
+                        <p className="app-description">
+                            A place to share knowledge and better understand of
+                            infants
+                        </p>
+                    </div>
+                    <div className="main-session-forms">
+                        <div className="signup-form">
                             <SignUpForm />
-                            </div>
-                            <div className="login-form">
+                        </div>
+                        <div className="login-form">
                             <LoginForm />
-                            </div>
                         </div>
                     </div>
                 </div>

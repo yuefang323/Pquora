@@ -9,10 +9,13 @@
 :root {
     --white: #ffffff;
 	--gray1: #ededed;
+    --gray2: #e2e2e2;
+	--gray3: rgb(102, 102, 102);
+	--gray4: #353535;
     --red: rgb(185, 43, 39);
+    --red2: #f40004;
     --blue: #0ba6ff;
     --yellow: #feef7b;
-    --red2: #f40004;
 }
 
 html,

@@ -16,7 +16,7 @@
     flex-direction: column;
     position: absolute;
     top: 50%;
-    left: 25%;
+    left: 30%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     border-radius: 10px;
@@ -24,6 +24,14 @@
     width: 480px;
     padding: 32px;
     box-sizing: border-box;
+}
+.splash-title-wrapper {
+    margin: 0;
+    padding: 0;
+}
+.splash-title-wrapper h3 {
+    margin: 0;
+    padding: 0;
 }
 .main-session-forms {
     display: flex;
@@ -73,7 +81,8 @@ button:hover {
 }
 
 .login-btn,
-.demo-login-btn {
+.demo-login-btn,
+.signup-btn {
     margin: 5px;
     margin-left: 3px; 
     padding: 2px;
@@ -83,7 +92,7 @@ button:hover {
     flex-direction: column;
     justify-content: flex-start;
     justify-items: flex-start;
-    width: 85%;
+    width: 103%;
 }
 .error-list div {
 	padding: 5px;
@@ -116,14 +125,14 @@ button:hover {
 	caret-color: black;
 	color: black;
 	/* border: none; */
-    border-color: blue;
+    border-color: var(--gray2);
 }
 
 input:focus {
 	outline: none;
 }
 .login-form {
-    border-left: #949494;
+    border-left: var(--gray2);
     border-left-style: solid;
 }
 .login-form-form {

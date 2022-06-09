@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { login } from "../../store/session";
@@ -35,6 +35,14 @@ const LoginForm = () => {
         setPassword(e.target.value);
     };
 
+    useEffect(() => {
+		return () => {
+			setErrors([]);
+			setEmail("");
+            setPassword("");
+		};
+	}, []);
+
     if (user) {
         return <Redirect to="/" />;
     }
@@ -52,7 +60,7 @@ const LoginForm = () => {
                     <input
                         name="email"
                         type="email"
-                        placeholder="Email"
+                        placeholder="Your email*"
                         value={email}
                         onChange={updateEmail}
                     />
@@ -62,7 +70,7 @@ const LoginForm = () => {
                     <input
                         name="password"
                         type="password"
-                        placeholder="Password"
+                        placeholder="Your password*"
                         value={password}
                         onChange={updatePassword}
                     />
