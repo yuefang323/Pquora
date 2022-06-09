@@ -7,7 +7,7 @@ def question_exists(form, field):
     # Check if a question already exists 
     content = field.data
 
-    question = Question.query.filter(Question.content == content).first()
+    question = Question.query.filter(Question.content == content.strip()).first()
     if question:
         raise ValidationError("The same question already exists.")
 
