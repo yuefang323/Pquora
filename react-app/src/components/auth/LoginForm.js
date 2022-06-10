@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { login } from "../../store/session";
+
 
 const LoginForm = () => {
     const [errors, setErrors] = useState([]);
@@ -34,42 +35,51 @@ const LoginForm = () => {
         setPassword(e.target.value);
     };
 
+    useEffect(() => {
+		return () => {
+			setErrors([]);
+			setEmail("");
+            setPassword("");
+		};
+	}, []);
+
     if (user) {
         return <Redirect to="/" />;
     }
 
     return (
-        <div className="login-background">
-            <div className="login-form-container">
-                <form onSubmit={onLogin}>
-                    <div>
-                        {errors.map((error, ind) => (
-                            <div key={ind}>{error}</div>
-                        ))}
-                    </div>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            name="email"
-                            type="text"
-                            placeholder="Email"
-                            value={email}
-                            onChange={updateEmail}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={updatePassword}
-                        />
-                        <button type="submit">Login</button>
-                    </div>
-                </form>
-            </div>
+        <div className="login-form-container">
+            <form className="login-form-form" onSubmit={onLogin}>
+                <div className="error-list">
+                    {errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                    ))}
+                </div>
+                <div className="login-input">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        name="email"
+                        type="email"
+                        placeholder="Your email*"
+                        value={email}
+                        onChange={updateEmail}
+                    />
+                </div>
+                <div className="login-input">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        name="password"
+                        type="password"
+                        placeholder="Your password*"
+                        value={password}
+                        onChange={updatePassword}
+                    />
+                    <div className="form-buttons">
+						<button className="login-btn" type="submit">Login</button>
+						<button className="demo-login-btn" onClick={demoLogin}>Demo Login</button>
+					</div>
+                </div>
+            </form>
         </div>
     );
 };

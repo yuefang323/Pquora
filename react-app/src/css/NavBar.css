@@ -1,0 +1,20 @@
+.nav-wrapper,
+.nav-right-side,
+.nav-left-side {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.nav-wrapper {
+    width: 100%;
+}
+.nav-right-side {
+    margin: 20px;
+    margin-right: 10%;
+}
+.nav-left-side {
+    margin: 20px;
+    margin-left: 10%
+}
