@@ -33,10 +33,8 @@ export const clearQuestions = () => ({
 // -------------Thunks-------------
 export const getAllQuestions = () => async (dispatch) => {
     const response = await fetch("/api/questions/");
-    console.log("response...", response)
     if (response.ok) {
         const data = await response.json();
-        console.log("xxxxxx", data.questions);
         dispatch(getQuestions(data.questions));
         return data;
     } else if (response.status < 500) {
@@ -48,6 +46,31 @@ export const getAllQuestions = () => async (dispatch) => {
         return ["An error occurred. Please try again."];
     }
 };
+
+export const addNewQuestion = (newQuestion) => async (dispatch) => {
+	const response = await fetch(`/api/questions/new`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(newQuestion),
+	});
+	if (response.ok) {
+		const data = await response.json();
+        console.log("data?????", data.question)
+		dispatch(addEditQuestion(data.question));
+        console.log("xxxxxxx", data.question)
+		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
+};
+
 
 // -------------Reducer-------------
 const initialState = {};

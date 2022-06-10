@@ -5,17 +5,15 @@
     justify-content: center;
     position: absolute;
     left: 25%; 
-    right: 30%;
-    /* background-color: aqua; */
+    right: 30%; 
     padding: 20px;
     margin: 20px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    white-space: nowrap;
+    margin-top: 150px; 
     height: auto;
     text-overflow: ellipsis;
     box-sizing: border-box;
     overflow-wrap: break-word;
+    z-index: -1; 
 }
 .time {
     width: 90%;

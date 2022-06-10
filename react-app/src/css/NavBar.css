@@ -9,6 +9,8 @@
 }
 .nav-wrapper {
     width: 100%;
+    position: fixed;
+    background-color: blue;
 }
 .nav-right-side {
     margin: 20px;
