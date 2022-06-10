@@ -6,6 +6,7 @@ import { login } from "../../store/session";
 import bg from "../../assets/splash-bg.jpg";
 import LoginForm from "../auth/LoginForm";
 import SignUpForm from "../auth/SignUpForm";
+import Footer from "./footer";
 
 const SplashPage = () => {
     const [errors, setErrors] = useState([]);
@@ -20,7 +21,7 @@ const SplashPage = () => {
         });
     };
 
-    if (user) return <Redirect to="/main" />;
+    if (user) return <Redirect to="/home" />;
 
     return (
         <div className="splash" style={{ backgroundImage: `url("${bg}")` }}>
@@ -61,9 +62,9 @@ const SplashPage = () => {
                             <LoginForm />
                         </div>
                     </div>
+                    <Footer />
                 </div>
             </main>
-            {/* <Footer /> */}
         </div>
     );
 };

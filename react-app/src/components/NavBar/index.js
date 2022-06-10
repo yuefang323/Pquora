@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
+import ReactTooltip from "react-tooltip";
 
 const NavBar = () => {
   return (
@@ -9,12 +10,12 @@ const NavBar = () => {
       <ul>
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+            pQuora
           </NavLink>
         </li>
         <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
+          <NavLink to='/home' exact={true} activeClassName='active'>
+            <i className="fa-solid fa-house"></i>
           </NavLink>
         </li>
         <li>
@@ -31,6 +32,7 @@ const NavBar = () => {
           <LogoutButton />
         </li>
       </ul>
+      <ReactTooltip place="bottom" type="dark" effect="solid" />
     </nav>
   );
 }

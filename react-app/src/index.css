@@ -34,6 +34,13 @@ a:hover {
 	text-decoration: none;
 }
 
+a {
+	color: var(--gray3);
+}
+a:hover {
+	color: var(--red);
+}
+
 button {
 	cursor: pointer;
 	border: none;
