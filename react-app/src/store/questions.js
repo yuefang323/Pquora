@@ -37,7 +37,7 @@ export const getAllQuestions = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         console.log("xxxxxx", data.questions);
-        dispatch(getQuestions(data));
+        dispatch(getQuestions(data.questions));
         return data;
     } else if (response.status < 500) {
         const data = await response.json();
@@ -57,8 +57,7 @@ export default function reducer(state = initialState, action) {
     let newState = Object.assign({}, state);
     switch (action.type) {
         case GET_QUESTIONS:
-            newState = { ...state }
-            action.questions.questions.forEach(question => (
+            action.questions.forEach(question => (
                 newState[question.id] = question  
             ));
             return newState;
