@@ -5,6 +5,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap");
 
 @import url("./css/SplashPage.css"); 
+@import url("./css/NavBar.css"); 
+@import url("./css/HomePage.css");
 
 :root {
     --white: #ffffff;
