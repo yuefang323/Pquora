@@ -61,9 +61,11 @@ def edit_question(question_id):
         question = Question.query.get(question_id)
         answers = Answer.query.filter(Answer.question_id == question_id).all()
         if question: 
+            q = question.to_dict()
+            q['answers'] = [answer.to_dict() for answer in answers]
             return {
-                "question": question.to_dict(),
-                "answers": [answer.to_dict() for answer in answers],
+                "question": q,
+                # "answers": [answer.to_dict() for answer in answers],
             }
         return {"errors": "Question not found"}
 
