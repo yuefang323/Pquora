@@ -31,7 +31,7 @@ const HomePage = () => {
             <NavBar />
             <div className="questions-list-content">
                 {questionsOrdered.map((obj) => (
-                    <div key={obj.id}>
+                    <div key={"question" + obj.id}>
                         <NavLink
                             to={`/questions/${obj.id}`}
                             exact={true}

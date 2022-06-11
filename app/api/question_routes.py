@@ -101,7 +101,8 @@ def delete_question(question_id):
             db.session.commit()
             
             return {
-                "message": f"Question {question_id} was deleted successfully"
+                "message": f"Question {question_id} was deleted successfully", 
+                "question": question.to_dict(),
             }
 
     return {'errors': ["You are not the owner of this question."]}, 401

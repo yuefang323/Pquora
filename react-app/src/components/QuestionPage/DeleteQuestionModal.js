@@ -1,23 +1,25 @@
 import { useState } from "react";
 import { Modal } from "../../context/Modal";
 
-import EditQuestion from "./EditQuestion";
+import DeleteQuestion from "./DeleteQuestion";
 
-const EditQuestionModal = () => {
+const DeleteQuestionModal = () => {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
             <div className="add-new-question-wrapper">
-                <button onClick={() => setShowModal(true)}>📝 Edit</button>
+                <button onClick={() => setShowModal(true)}>
+                    <i className="fa-solid fa-trash-can fa-fw"></i>Delete
+                </button>
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditQuestion setShowModal={setShowModal} />
+                    <DeleteQuestion setShowModal={setShowModal} />
                 </Modal>
             )}
         </>
     );
 };
 
-export default EditQuestionModal;
+export default DeleteQuestionModal;

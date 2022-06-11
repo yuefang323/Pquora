@@ -108,6 +108,28 @@ export const editQuestion = (question) => async (dispatch) => {
     }
 };
 
+export const deleteThisQuestion = (questionToDelete) => async (dispatch) => {
+    const response = await fetch(`/api/questions/${questionToDelete.id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(questionToDelete),
+    });
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(deleteQuestion(data.question.id));
+        return data;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data;
+        }
+    } else {
+        return { errors: ["An error occurred. Please try again."] };
+    }
+};
+
 // -------------Reducer-------------
 const initialState = {};
 

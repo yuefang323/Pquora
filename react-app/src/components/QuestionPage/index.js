@@ -1,15 +1,15 @@
 import { useEffect } from "react";
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 
 import NavBar from "../NavBar";
 import * as questionsActions from "../../store/questions";
 
 import EditQuestionModal from "./EditQuestionModal"
+import DeleteQuestionModal from "./DeleteQuestionModal"
 
 const QuestionPage = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const user = useSelector((state) => state.session.user);
     const { questionId } = useParams();
     const questions = useSelector((state) => state.questions);
@@ -39,9 +39,7 @@ const QuestionPage = () => {
                         <div className="edit-and-delete-btns">
                             <button className="answer-btn">💬 Answer</button>
                             <EditQuestionModal />
-                            <button className="delete-btn">
-                                <i className="fa-solid fa-trash-can"></i>Delete
-                            </button>
+                            <DeleteQuestionModal />
                         </div>
                     )}
                 </div>

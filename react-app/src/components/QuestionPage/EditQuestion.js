@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import * as questionsActions from "../../store/questions";
 
-const EditQuestion = ({ setShowModal, onClose }) => {
+const EditQuestion = ({ setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -34,21 +34,17 @@ const EditQuestion = ({ setShowModal, onClose }) => {
         }
 
         const updateQuestion = { content, id: questionId };
-        const res = await dispatch(
-            questionsActions.editQuestion(updateQuestion)
-        );
+        dispatch(questionsActions.editQuestion(updateQuestion));
         dispatch(questionsActions.getQuestion(questionId));
         setContent("");
 
         if (setShowModal) setShowModal(false);
-        if (onClose) onClose();
         history.push(`/questions/${questionId}`);
     };
 
     const cancelButton = async (e) => {
         setErrors([]);
         if (setShowModal) setShowModal(false);
-        if (onClose) onClose();
         setContent("");
     };
 
