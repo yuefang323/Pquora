@@ -10,14 +10,13 @@ import UpdatedAt from "../util/UpdatedAt";
 import * as questionsActions from "../../store/questions";
 
 const HomePage = () => {
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
     const user = useSelector((state) => state.session.user);
     const questions = useSelector((state) => state.questions);
-    const questionsList = Object.values(questions)
+    const questionsList = Object.values(questions);
     const questionsOrdered = questionsList.sort((a, b) =>
-		b.updated_at.localeCompare(a.updated_at)
-	);
-
+        b.updated_at.localeCompare(a.updated_at)
+    );
 
     const dispatch = useDispatch();
 
@@ -44,14 +43,12 @@ const HomePage = () => {
                         </NavLink>
                         <div className="time">
                             <div className="create-at-time">
-                                Created at:{" "}
-                                {/* <CreatedAt created_at={obj.created_at} /> */}
-                                {obj.created_at}
+                                Created at:{' '}
+                                <CreatedAt created_at={obj.created_at} />
                             </div>
                             <div className="update-at-time">
-                                Updated at:{" "}
-                                {obj.updated_at}
-                                {/* <UpdatedAt updated_at={obj.updated_at} /> */}
+                                Updated at:{' '}
+                                <UpdatedAt updated_at={obj.updated_at} />
                             </div>
                         </div>
                     </div>

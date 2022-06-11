@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory, useParams } from "react-router";
+import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as questionsActions from "../../store/questions";

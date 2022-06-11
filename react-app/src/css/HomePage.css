@@ -33,3 +33,6 @@ p.question-detail {
     overflow-wrap: break-word;
     text-overflow: ellipsis;
 }
+p.question-detail:hover {
+    color: var(--red);
+}
