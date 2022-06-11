@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 from app.models import db, Question, Answer, Tag
 from app.forms import NewQuestionForm, EditQuestionForm
 from app.models.answer import Answer
+from datetime import datetime
 
 question_routes = Blueprint('questions', __name__)
 
@@ -38,7 +39,10 @@ def new_question():
         user_id = current_user.id
         content = form.data["content"]
         tag_id = form.data["tag_id"]
-        new_question = Question(owner_id=user_id, content=content, tag_id=tag_id)
+        created_at = datetime.now()
+        updated_at = datetime.now()
+        
+        new_question = Question(owner_id=user_id, content=content, tag_id=tag_id, created_at=created_at, updated_at=updated_at)
         
         db.session.add(new_question)
         db.session.commit()
@@ -73,6 +77,7 @@ def edit_question(question_id):
         if form.validate_on_submit():
             question.content = form.data["content"]
             question.tag_id = form.data["tag_id"]
+            question.updated_at = datetime.now()
             
             db.session.commit()
 
@@ -96,7 +101,8 @@ def delete_question(question_id):
             db.session.commit()
             
             return {
-                "message": f"Question {question_id} was deleted successfully"
+                "message": f"Question {question_id} was deleted successfully", 
+                "question": question.to_dict(),
             }
 
     return {'errors': ["You are not the owner of this question."]}, 401

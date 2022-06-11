@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import ReactTooltip from "react-tooltip";
+import AddQuestionModal from "./AddQuestionModel";
 
 const NavBar = () => {
     return (
@@ -9,7 +10,12 @@ const NavBar = () => {
             <div className="nav-left-side">
                 <h2>pQuora</h2>
                 <div className="nav-center">
-                    <NavLink to="/" exact={true} activeClassName="active"  data-tip="Home">
+                    <NavLink
+                        to="/"
+                        exact={true}
+                        activeClassName="active"
+                        data-tip="Home"
+                    >
                         <i className="fa-solid fa-house"></i>
                     </NavLink>
                     <NavLink
@@ -23,14 +29,8 @@ const NavBar = () => {
                 </div>
             </div>
             <div className="nav-right-side">
-                <div className="nav-question">
-                    <NavLink
-                        to="/questions"
-                        exact={true}
-                        activeClassName="active"
-                    >
-                        Questions
-                    </NavLink>
+                <div className="nav-ask-question">
+                    <AddQuestionModal />
                 </div>
                 <div className="nav-logout">
                     <LogoutButton />

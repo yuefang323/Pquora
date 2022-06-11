@@ -7,6 +7,8 @@ import { authenticate } from "./store/session";
 
 import SplashPage from "./components/SplashPage"
 import HomePage from "./components/HomePage";
+import QuestionPage from "./components/QuestionPage"
+
 
 function App() {
     const [loaded, setLoaded] = useState(false);
@@ -33,6 +35,9 @@ function App() {
                 <Route path="/about" exact={true}>
                     {/* <About /> */}
                 </Route>
+                <ProtectedRoute path="/questions/:questionId" exact={true}>
+                    <QuestionPage />
+                </ProtectedRoute>
                 <ProtectedRoute path="/users/:userId" exact={true}>
                     <User />
                 </ProtectedRoute>

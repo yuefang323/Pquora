@@ -10,10 +10,13 @@ import UpdatedAt from "../util/UpdatedAt";
 import * as questionsActions from "../../store/questions";
 
 const HomePage = () => {
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
     const user = useSelector((state) => state.session.user);
     const questions = useSelector((state) => state.questions);
-    console.log("questions", questions);
+    const questionsList = Object.values(questions);
+    const questionsOrdered = questionsList.sort((a, b) =>
+        b.updated_at.localeCompare(a.updated_at)
+    );
 
     const dispatch = useDispatch();
 
@@ -24,36 +27,32 @@ const HomePage = () => {
     if (!user) return <Redirect to="/" />;
 
     return (
-        <div>
+        <div className="home-page-wrapper">
             <NavBar />
-            <div className="question-list-wrapper">
-                <div className="questions-list-content">
-                    {Object.values(questions).map((obj) => (
-                        <div key={obj.id}>
-                            <NavLink
-                                to={`/questions/${obj.id}`}
-                                exact={true}
-                                className="question-detail"
-                            >
-                                <div>
-                                    <p className="question-detail">
-                                        {obj.content}
-                                    </p>
-                                </div>
-                            </NavLink>
-                            <div className="time">
-                                <div className="create-at-time">
-                                    Created at:{" "}
-                                    <CreatedAt created_at={obj.created_at} />
-                                </div>
-                                <div className="update-at-time">
-                                    Updated at:{" "}
-                                    <UpdatedAt updated_at={obj.updated_at} />
-                                </div>
+            <div className="questions-list-content">
+                {questionsOrdered.map((obj) => (
+                    <div key={"question" + obj.id}>
+                        <NavLink
+                            to={`/questions/${obj.id}`}
+                            exact={true}
+                            className="question-detail"
+                        >
+                            <div>
+                                <p className="question-detail">{obj.content}</p>
+                            </div>
+                        </NavLink>
+                        <div className="time">
+                            <div className="create-at-time">
+                                Created at:{' '}
+                                <CreatedAt created_at={obj.created_at} />
+                            </div>
+                            <div className="update-at-time">
+                                Updated at:{' '}
+                                <UpdatedAt updated_at={obj.updated_at} />
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

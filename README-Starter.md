@@ -81,7 +81,9 @@ The following instructions detail an *optional* development setup for M1 Mac use
    ```bash
    flask run
    ```
-
+    ```bash
+   pipenv run flask db revision --autogenerate -m "review-dates"
+    ```
 9. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
 <br>
@@ -127,3 +129,7 @@ each of the following variables:
 | `heroku login -i`      | Authenticate your heroku-cli using the command line. Drop the -i to authenticate via the browser |
 | `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
 | `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
+| `heroku run -a <app name> flask db upgrade` | Run a command from within the deployed container on Heroku |
+| `heroku run -a <app name> flask db seed undo` | Run a command from within the deployed container on Heroku |
+| `heroku run -a <app name> flask db seed all` | Run a command from within the deployed container on Heroku |
+| `heroku postgres remove` | Remove all db |
