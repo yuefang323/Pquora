@@ -49,7 +49,7 @@ export const getAnswer = (answerId) => async (dispatch) => {
 };
 
 export const addNewAnswer = (newAnswer) => async (dispatch) => {
-    console.log("am I here???", newAnswer)
+    console.log("am I here???", newAnswer);
     const response = await fetch(`/api/answers/${newAnswer.id}/new`, {
         method: "POST",
         headers: {
@@ -124,9 +124,7 @@ export default function reducer(state = initialState, action) {
     let newState = Object.assign({}, state);
     switch (action.type) {
         case GET_ANSWERS:
-            action.answers.forEach(
-                (answer) => (newState[answer.id] = answer)
-            );
+            action.answers.forEach((answer) => (newState[answer.id] = answer));
             return newState;
         case ADD_EDIT_ANSWER:
             newState[action.answer.id] = action.answer;
