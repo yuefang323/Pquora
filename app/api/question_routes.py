@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
 from app.models import db, Question, Answer, Tag
 from app.forms import NewQuestionForm, EditQuestionForm
-from app.models.answer import Answer
 from datetime import datetime
 
 question_routes = Blueprint('questions', __name__)
@@ -61,16 +60,18 @@ def edit_question(question_id):
         question = Question.query.get(question_id)
         answers = Answer.query.filter(Answer.question_id == question_id).all()
         if question: 
+            q = question.to_dict()
+            q['answers'] = [answer.to_dict() for answer in answers]
             return {
-                "question": question.to_dict(),
-                "answers": [answer.to_dict() for answer in answers],
+                "question": q,
+                # "answers": [answer.to_dict() for answer in answers],
             }
-        return {"errors": "Question not found"}
+        return {"errors": "Question not found"}, 404
 
     if request.method == "PUT":
         question = Question.query.get(question_id)
         if question.owner_id != current_user.id:
-            return {'errors': "You are not the owner of this question."}, 418
+            return {'errors': "You are not the owner of this question."}, 401
         
         form = EditQuestionForm()
         form['csrf_token'].data = request.cookies['csrf_token']
@@ -104,6 +105,6 @@ def delete_question(question_id):
                 "message": f"Question {question_id} was deleted successfully", 
                 "question": question.to_dict(),
             }
-
-    return {'errors': ["You are not the owner of this question."]}, 401
+        return {'errors': ["You are not the owner of this question."]}, 401
+    return {'errors': 'Question not found.'}, 404
 

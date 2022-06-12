@@ -12,5 +12,5 @@ def question_exists(form, field):
         raise ValidationError("The same question already exists.")
 
 class NewQuestionForm(FlaskForm):
-    content = StringField("content", validators=[DataRequired(), question_exists, Length(min=3, max=5000, message='Question content must be between 3 and 5000 characters.')])
+    content = StringField("content", validators=[DataRequired(message='Please provide your question content.'), question_exists, Length(min=3, max=5000, message='Question content must be between 3 and 5000 characters.')])
     tag_id = IntegerField("tag_id")
