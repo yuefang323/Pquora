@@ -5,7 +5,7 @@ class Answer(db.Model):
     __tablename__ = 'answers'
     
     id = db.Column(db.Integer, primary_key=True)
-    answer = db.Column(db.Text, nullable=False)
+    content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     question_id = db.Column(db.Integer, db.ForeignKey("questions.id"), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
@@ -19,7 +19,7 @@ class Answer(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'answer': self.answer,
+            'content': self.content,
             'user_id': self.user_id,
             'question_id': self.question_id,
             'created_at': self.created_at.isoformat(),
