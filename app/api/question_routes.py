@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
 from app.models import db, Question, Answer, Tag
 from app.forms import NewQuestionForm, EditQuestionForm
-from app.models.answer import Answer
 from datetime import datetime
 
 question_routes = Blueprint('questions', __name__)

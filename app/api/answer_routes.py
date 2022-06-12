@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request, json
 from flask_login import current_user, login_required
 from app.models import db, Question, Answer
 from app.forms import NewAnswerForm, EditAnswerForm
-from app.models.answer import Answer
 from datetime import datetime
 
 answer_routes = Blueprint('answers', __name__)
@@ -37,6 +36,8 @@ def new_answer(questionId):
         db.session.add(new_answer)
         db.session.commit()
         updatedQuestion = Question.query.get(questionId)
+        updatedQuestion.updated_at = datetime.now()
+        db.session.commit()
         
         return {
             "answer": new_answer.to_dict(),
@@ -69,10 +70,14 @@ def edit_answer(answerId):
     if form.validate_on_submit():
         answer.answer = form.data["answer"]
         answer.updated_at = datetime.now()
-        
+        updatedQuestion = Question.query.get(answer.question_id)
+        updatedQuestion.updated_at = datetime.now()
         db.session.commit()
 
-        return {"answer": answer.to_dict()}
+        return {
+                "answer": answer.to_dict(),
+                "updatedQuestion": updatedQuestion.to_dict()
+                }
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
