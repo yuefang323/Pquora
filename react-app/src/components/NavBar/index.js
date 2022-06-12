@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import ReactTooltip from "react-tooltip";
-import AddQuestionModal from "./AddQuestionModel";
+import AddQuestionModal from "../QuestionPage/AddQuestionModel";
 
 const NavBar = () => {
     return (
