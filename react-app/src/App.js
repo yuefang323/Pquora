@@ -5,9 +5,10 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 
-import SplashPage from "./components/SplashPage"
+import SplashPage from "./components/SplashPage"; 
 import HomePage from "./components/HomePage";
-import QuestionPage from "./components/QuestionPage"
+import QuestionPage from "./components/QuestionPage";
+import QuestionsToAnswerPage from "./components/QuestionsToAnswerPage";
 
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
                 <Route path="/about" exact={true}>
                     {/* <About /> */}
                 </Route>
+                <ProtectedRoute path="/questions" exact={true}>
+                    <QuestionsToAnswerPage />
+                </ProtectedRoute>
                 <ProtectedRoute path="/questions/:questionId" exact={true}>
                     <QuestionPage />
                 </ProtectedRoute>

@@ -19,7 +19,7 @@ const NavBar = () => {
                         <i className="fa-solid fa-house"></i>
                     </NavLink>
                     <NavLink
-                        to="/answers"
+                        to="/questions"
                         exact={true}
                         activeClassName="active"
                         data-tip="Answers"

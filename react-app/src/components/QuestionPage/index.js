@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import NavBar from "../NavBar";
 import * as questionsActions from "../../store/questions";
@@ -25,11 +25,6 @@ const QuestionPage = () => {
         b.updated_at.localeCompare(a.updated_at)
     );
 
-    // answersList.sort((a, b) => {
-    //     const keyA = a.updated_at;
-    //     const keyB = b.updated_at;
-    //     return keyA > keyB ? -1 : 1;
-    //   });
     const qOwnerId = questions[questionId]?.owner_id;
 
     useEffect(() => {
@@ -70,7 +65,7 @@ const QuestionPage = () => {
                             >
                                 <div>
                                     <p className="answer-detail">
-                                        {obj.answer}
+                                        {obj.content}
                                     </p>
                                 </div>
                             </NavLink>
