@@ -49,7 +49,7 @@ const QuestionPage = () => {
                     )}
                     {qOwnerId === user.id && (
                         <div className="edit-and-delete-btns">
-                            <button className="answer-btn">💬 Answer</button>
+                            {/* <button className="answer-btn">💬 Answer</button> */}
                             <EditQuestionModal />
                             <DeleteQuestionModal />
                         </div>
