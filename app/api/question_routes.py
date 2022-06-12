@@ -67,12 +67,12 @@ def edit_question(question_id):
                 "question": q,
                 # "answers": [answer.to_dict() for answer in answers],
             }
-        return {"errors": "Question not found"}
+        return {"errors": "Question not found"}, 404
 
     if request.method == "PUT":
         question = Question.query.get(question_id)
         if question.owner_id != current_user.id:
-            return {'errors': "You are not the owner of this question."}, 418
+            return {'errors': "You are not the owner of this question."}, 401
         
         form = EditQuestionForm()
         form['csrf_token'].data = request.cookies['csrf_token']
@@ -106,6 +106,6 @@ def delete_question(question_id):
                 "message": f"Question {question_id} was deleted successfully", 
                 "question": question.to_dict(),
             }
-
-    return {'errors': ["You are not the owner of this question."]}, 401
+        return {'errors': ["You are not the owner of this question."]}, 401
+    return {'errors': 'Question not found.'}, 404
 

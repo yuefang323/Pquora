@@ -1,12 +1,15 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink, Redirect } from "react-router-dom";
 
 import NavBar from "../NavBar";
 import * as questionsActions from "../../store/questions";
 
-import EditQuestionModal from "./EditQuestionModal"
-import DeleteQuestionModal from "./DeleteQuestionModal"
+import EditQuestionModal from "./EditQuestionModal";
+import DeleteQuestionModal from "./DeleteQuestionModal";
+import CreatedAt from "../util/CreatedAt";
+import UpdatedAt from "../util/UpdatedAt";
 
 const QuestionPage = () => {
     const dispatch = useDispatch();
@@ -14,10 +17,24 @@ const QuestionPage = () => {
     const { questionId } = useParams();
     const questions = useSelector((state) => state.questions);
     const content = questions[questionId]?.content;
+    const answersList = questions[questionId]?.answers
+        ? questions[questionId]?.answers
+        : [];
+    console.log("answersList", answersList);
+    const answersOrdered = answersList.sort((a, b) =>
+        b.updated_at.localeCompare(a.updated_at)
+    );
+
+    // answersList.sort((a, b) => {
+    //     const keyA = a.updated_at;
+    //     const keyB = b.updated_at;
+    //     return keyA > keyB ? -1 : 1;
+    //   });
     const qOwnerId = questions[questionId]?.owner_id;
 
     useEffect(() => {
         if (questionId) {
+            // dispatch(questionsActions.getQuestions())
             dispatch(questionsActions.getQuestion(questionId))
                 // .then((res) => {
                 // 	dispatch(chatsActions.getChats(res.chats));
@@ -42,6 +59,33 @@ const QuestionPage = () => {
                             <DeleteQuestionModal />
                         </div>
                     )}
+                </div>
+                <div className="answers-lit">
+                    {answersOrdered.map((obj) => (
+                        <div key={"answer" + obj.id}>
+                            <NavLink
+                                to={`/answers/${obj.id}`}
+                                exact={true}
+                                className="answer-detail"
+                            >
+                                <div>
+                                    <p className="answer-detail">
+                                        {obj.answer}
+                                    </p>
+                                </div>
+                            </NavLink>
+                            <div className="time">
+                                <div className="create-at-time">
+                                    Created at:{" "}
+                                    <CreatedAt created_at={obj.created_at} />
+                                </div>
+                                <div className="update-at-time">
+                                    Updated at:{" "}
+                                    <UpdatedAt updated_at={obj.updated_at} />
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

@@ -58,7 +58,7 @@ def seed_answers():
         question_id='3')  
     
     a3_to_q3 = Answer(
-        answer="Margaret", 
+        answer="Marry", 
         user_id='2', 
         question_id='3')  
 
