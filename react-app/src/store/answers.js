@@ -48,6 +48,22 @@ export const getAnswer = (answerId) => async (dispatch) => {
     }
 };
 
+export const getAnswersFromAQuestion = (questionId) => async (dispatch) => {
+    const response = await fetch(`/api/questions/${questionId}`);
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(getAnswers(data.answers));
+        return data;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["An error occurred. Please try again."];
+    }
+};
+
 export const addNewAnswer = (newAnswer) => async (dispatch) => {
     console.log("am I here???", newAnswer);
     const response = await fetch(`/api/answers/${newAnswer.id}/new`, {

@@ -34,9 +34,6 @@ const AddAnswer = ({ setShowModal }) => {
             answersActions.addNewAnswer(newAnswer)
         );
         dispatch(answersActions.addEditAnswer(res.answer));
-        // dispatch(answersActions.getAnswers());
-
-        // dispatch(questionsActions.getQuestion(res.question));
         setContent("");
 
         if (setShowModal) setShowModal(false);

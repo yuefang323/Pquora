@@ -64,7 +64,7 @@ def edit_question(question_id):
             q['answers'] = [answer.to_dict() for answer in answers]
             return {
                 "question": q,
-                # "answers": [answer.to_dict() for answer in answers],
+                "answers": [answer.to_dict() for answer in answers],
             }
         return {"errors": "Question not found"}, 404
 
