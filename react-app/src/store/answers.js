@@ -49,7 +49,8 @@ export const getAnswer = (answerId) => async (dispatch) => {
 };
 
 export const addNewAnswer = (newAnswer) => async (dispatch) => {
-    const response = await fetch(`/api/answers/${newAnswer.question_id}/new`, {
+    console.log("am I here???", newAnswer)
+    const response = await fetch(`/api/answers/${newAnswer.id}/new`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -58,7 +59,7 @@ export const addNewAnswer = (newAnswer) => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        dispatch(addEditQuestion(data.answer));
+        dispatch(addEditAnswer(data.answer));
         return data;
     } else if (response.status < 500) {
         const data = await response.json();
@@ -81,7 +82,7 @@ export const editAnswer = (answer) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(addEditQuestion(data.answer));
+        dispatch(addEditAnswer(data.answer));
         return data;
     } else if (response.status < 500) {
         const data = await response.json();
@@ -103,7 +104,7 @@ export const deleteThisAnswer = (answerToDelete) => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        dispatch(deleteQuestion(data.answer.id));
+        dispatch(deleteAnswer(data.answer.id));
         return data;
     } else if (response.status < 500) {
         const data = await response.json();
@@ -133,7 +134,7 @@ export default function reducer(state = initialState, action) {
         case DELETE_ANSWER:
             delete newState[action.answerId];
             return newState;
-        case CLEAR_QUESTIONS:
+        case CLEAR_ANSWERS:
             return {};
         default:
             return state;

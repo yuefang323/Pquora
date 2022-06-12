@@ -1,16 +1,20 @@
-import { useState } from "react";
-import { useHistory } from "react-router";
+import { useReducer, useState } from "react";
+import { useHistory, useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as answersActions from "../../store/answers";
+import * as questionsActions from "../../store/questions";
 
 const AddAnswer = ({ setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const { questionId } = useParams()
+    console.log("questionId", questionId)
     const [content, setContent] = useState("");
     const [errors, setErrors] = useState([]);
+    const user = useSelector(state => state.session.user)
     const questions = useSelector((state) => state.questions);
+    const curQuestion = questions[questionId].content; 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,15 +28,19 @@ const AddAnswer = ({ setShowModal }) => {
             setErrors(validateErrors);
             return;
         }
-        const newAnswer = { content };
+        const newAnswer = { content, id: questionId };
+        console.log("newAnswer....", newAnswer)
         const res = await dispatch(
-            questionsActions.addNewAnswer(newAnswer)
+            answersActions.addNewAnswer(newAnswer)
         );
-        dispatch(questionsActions.addEditQuestion(res.question));
+        dispatch(answersActions.addEditAnswer(res.answer));
+        // dispatch(answersActions.getAnswers());
+
+        // dispatch(questionsActions.getQuestion(res.question));
         setContent("");
 
         if (setShowModal) setShowModal(false);
-        history.push(`/`);
+        history.push(`/questions/${questionId}`);
     };
 
     const cancelButton = async (e) => {
@@ -45,7 +53,8 @@ const AddAnswer = ({ setShowModal }) => {
         <>
             <div className="add-question-modal add-questions">
                 <div className="add-question-form">
-                    <h2 className="form-h2">Add Question</h2>
+                    <p>{user.username}</p>
+                    <h2 className="form-h2">{curQuestion}</h2>
                     <div className="error-and-question-input">
                         <div className="error-list">
                             {errors &&
@@ -66,7 +75,7 @@ const AddAnswer = ({ setShowModal }) => {
                                         onChange={(e) =>
                                             setContent(e.target.value)
                                         }
-                                        placeholder='Start your question with "What", "How", "Why", etc.'
+                                        placeholder='Write your answer'
                                         className="textarea-content"
                                     />
                                 </div>
@@ -75,7 +84,7 @@ const AddAnswer = ({ setShowModal }) => {
                                 <button onClick={cancelButton} type="reset">
                                     Cancel
                                 </button>
-                                <button type="submit">Add question</button>
+                                <button type="submit">Post</button>
                             </div>
                         </form>
                     </div>

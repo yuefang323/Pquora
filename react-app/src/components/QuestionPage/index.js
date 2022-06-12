@@ -8,6 +8,7 @@ import * as questionsActions from "../../store/questions";
 
 import EditQuestionModal from "./EditQuestionModal";
 import DeleteQuestionModal from "./DeleteQuestionModal";
+import AddAnswerModal from "../AnswerPage/AddAnswerModal"
 import CreatedAt from "../util/CreatedAt";
 import UpdatedAt from "../util/UpdatedAt";
 
@@ -44,12 +45,9 @@ const QuestionPage = () => {
             <div className="single-question-info">
                 <h2 className="a-question-content">{content}</h2>
                 <div className="edit-question-btn">
-                    {qOwnerId !== user.id && (
-                        <button className="answer-btn">💬 Answer</button>
-                    )}
+                    {qOwnerId !== user.id && <AddAnswerModal />}
                     {qOwnerId === user.id && (
                         <div className="edit-and-delete-btns">
-                            {/* <button className="answer-btn">💬 Answer</button> */}
                             <EditQuestionModal />
                             <DeleteQuestionModal />
                         </div>
