@@ -1,33 +1,34 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-import * as questionsActions from "../../store/questions";
+import * as answersActions from "../../store/answers";
 
-const DeleteQuestion = ({ setShowModal }) => {
+const DeleteQuestion = ({ setShowModal, answerId }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
     const [errors, setErrors] = useState([]);
-    const { questionId } = useParams();
-    const questionIdNum = parseInt(questionId)
-    const questions = useSelector((state) => state.questions);
-    const content = questions[questionId].content;
+    const answers = useSelector((state) => state.answers);
+    const curAnswer = answers[answerId]; 
+    const content = curAnswer.content
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const questionToDelete = {
-            id: questionIdNum, 
+        const answerToDelete = {
+            id: parseInt(answerId), 
             content
         };
+        console.log("xxxxxx", answerToDelete)
         const res = await dispatch(
-            questionsActions.deleteThisQuestion(questionToDelete)
+            answersActions.deleteThisAnswer(answerToDelete)
         );
 
         if (!res.errors) {
-            history.push(`/`);
             setShowModal(false);
-            // dispatch(questionsActions.addEditQuestion(questionId))
+            dispatch(answersActions.addEditAnswer(answerId))
+            history.push(`/questions/${curAnswer.question_id}`);
         } else {
             setErrors(res.errors);
         }
@@ -40,13 +41,14 @@ const DeleteQuestion = ({ setShowModal }) => {
 
     return (
         <div className="question-delete-form">
+            <h3>Your answer</h3>
+            <div> {content} </div>
             <h4 className="warning-message">
-                Do you really want to delete this question? This action cannot
+                Do you really want to delete this answer? This action cannot
                 be undone.
             </h4>
-            <div> {content} </div>
             <button className="yes-button" type="submit" onClick={handleSubmit}>
-                Yes
+                Confirm
             </button>
             <button onClick={cancelButton} type="reset">
                 Cancel

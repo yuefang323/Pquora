@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { login } from "../../store/session";
 
 import bg from "../../assets/splash-bg.jpg";
 import LoginForm from "../auth/LoginForm";
@@ -11,15 +10,6 @@ import Footer from "./footer";
 const SplashPage = () => {
     const [errors, setErrors] = useState([]);
     const user = useSelector((state) => state.session.user);
-    const dispatch = useDispatch();
-
-    // const demoLogin = (e) => {
-    //     e.preventDefault();
-    //     return dispatch(login("demo@aa.io", "password")).catch(async (res) => {
-    //         const data = await res.json();
-    //         if (data && data.errors) setErrors(data.errors);
-    //     });
-    // };
 
     if (user) return <Redirect to="/home" />;
 

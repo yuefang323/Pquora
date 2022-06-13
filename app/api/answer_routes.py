@@ -27,11 +27,11 @@ def new_answer(questionId):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user_id = current_user.id
-        answer = form.data["answer"]
+        content = form.data["content"]
         created_at = datetime.now()
         updated_at = datetime.now()
         
-        new_answer = Answer(user_id=user_id, answer=answer, question_id=questionId, created_at=created_at, updated_at=updated_at)
+        new_answer = Answer(user_id=user_id, content=content, question_id=questionId, created_at=created_at, updated_at=updated_at)
         
         db.session.add(new_answer)
         db.session.commit()
@@ -68,7 +68,7 @@ def edit_answer(answerId):
     form = EditAnswerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        answer.answer = form.data["answer"]
+        answer.content = form.data["content"]
         answer.updated_at = datetime.now()
         updatedQuestion = Question.query.get(answer.question_id)
         updatedQuestion.updated_at = datetime.now()
@@ -94,7 +94,7 @@ def delete_answer(answerId):
             db.session.delete(answer)
             db.session.commit()
             return {
-                "answerId": answerId,
+                "answer": answer.to_dict(),
                 "message": f"Question {answerId} was deleted successfully", 
             }
 

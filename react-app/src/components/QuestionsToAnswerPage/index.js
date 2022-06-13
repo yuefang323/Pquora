@@ -8,12 +8,12 @@ import UpdatedAt from "../util/UpdatedAt";
 
 import * as questionsActions from "../../store/questions";
 
-const HomePage = () => {
-    // const [errors, setErrors] = useState([]);
+const QuestionsToAnswerPage = () => {
     const user = useSelector((state) => state.session.user);
     const questions = useSelector((state) => state.questions);
     const questionsList = Object.values(questions);
-    const questionsOrdered = questionsList.sort((a, b) =>
+    const questionsToAnswer = questionsList.filter((obj) => obj.owner_id !== user.id )
+    const questionsOrdered = questionsToAnswer.sort((a, b) =>
         b.updated_at.localeCompare(a.updated_at)
     );
 
@@ -57,4 +57,4 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default QuestionsToAnswerPage;
