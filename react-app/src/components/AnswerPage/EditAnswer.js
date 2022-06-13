@@ -8,14 +8,14 @@ const EditAnswer = ({ setShowModal, answerId }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const { questionId } = useParams(); 
-    const [content, setContent] = useState("");
-    const [errors, setErrors] = useState([]);
-    const user = useSelector(state => state.session.user)
+    const { questionId } = useParams();
+    const user = useSelector((state) => state.session.user);
     const answers = useSelector((state) => state.answers);
-    const questions = useSelector((state) => state.questions)
-    const curAnswer = answers[answerId]; 
-    const curQuestion = questions[questionId]; 
+    const questions = useSelector((state) => state.questions);
+    const curAnswer = answers[answerId];
+    const curQuestion = questions[questionId];
+    const [content, setContent] = useState(curAnswer.content);
+    const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,6 +25,8 @@ const EditAnswer = ({ setShowModal, answerId }) => {
             validateErrors.push(
                 "Answer content must be between 3 and 5000 characters."
             );
+        if (curAnswer.content === content.toLowerCase().trim())
+            validateErrors.push("The updated answer should be different.");
         if (validateErrors.length > 0) {
             setErrors(validateErrors);
             return;
@@ -48,6 +50,7 @@ const EditAnswer = ({ setShowModal, answerId }) => {
         <>
             <div className="add-question-modal add-questions">
                 <div className="add-question-form">
+                    <h3>Edit your answer</h3>
                     <p>{user.username}</p>
                     <h2 className="form-h2">{curQuestion.content}</h2>
                     <div className="error-and-question-input">
@@ -62,7 +65,6 @@ const EditAnswer = ({ setShowModal, answerId }) => {
                             onSubmit={handleSubmit}
                         >
                             <div className="add-question-input input-height">
-                                {/* <label>Question</label> */}
                                 <div className="input-field">
                                     <textarea
                                         type="text"
@@ -70,7 +72,6 @@ const EditAnswer = ({ setShowModal, answerId }) => {
                                         onChange={(e) =>
                                             setContent(e.target.value)
                                         }
-                                        placeholder={curAnswer.content}
                                         className="textarea-content"
                                     />
                                 </div>

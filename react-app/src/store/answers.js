@@ -117,6 +117,7 @@ export const deleteThisAnswer = (answerToDelete) => async (dispatch) => {
         },
         body: JSON.stringify(answerToDelete),
     });
+    console.log("answerToDelete...", answerToDelete)
     if (response.ok) {
         const data = await response.json();
         dispatch(deleteAnswer(data.answer.id));

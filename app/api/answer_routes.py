@@ -94,7 +94,7 @@ def delete_answer(answerId):
             db.session.delete(answer)
             db.session.commit()
             return {
-                "answerId": answerId,
+                "answer": answer.to_dict(),
                 "message": f"Question {answerId} was deleted successfully", 
             }
 

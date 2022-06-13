@@ -3,7 +3,6 @@ import { useHistory, useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as answersActions from "../../store/answers";
-import * as questionsActions from "../../store/questions";
 
 const AddAnswer = ({ setShowModal }) => {
     const dispatch = useDispatch();

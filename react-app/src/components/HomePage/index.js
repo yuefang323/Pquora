@@ -21,7 +21,7 @@ const HomePage = () => {
 
     useEffect(() => {
         dispatch(questionsActions.getAllQuestions());
-    }, []);
+    }, [dispatch]);
 
     if (!user) return <Redirect to="/" />;
 

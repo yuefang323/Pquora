@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 
 import NavBar from "../NavBar";
 import * as answerActions from "../../store/answers";
@@ -10,6 +9,7 @@ import EditQuestionModal from "./EditQuestionModal";
 import DeleteQuestionModal from "./DeleteQuestionModal";
 import AddAnswerModal from "../AnswerPage/AddAnswerModal";
 import EditAnswerModal from "../AnswerPage/EditAnswerModal"
+import DeleteAnswerModal from "../AnswerPage/DeleteAnswerModal"
 import CreatedAt from "../util/CreatedAt";
 import UpdatedAt from "../util/UpdatedAt";
 
@@ -58,7 +58,7 @@ const QuestionPage = () => {
                                 {obj.user_id === user.id && (
                                     <div className="edit-delete-answer-btns">
                                         <EditAnswerModal answerId={obj.id}/>
-                                        <button>Delete</button>
+                                        <DeleteAnswerModal answerId={obj.id} />
                                     </div>
                                 )}
                             </div>
