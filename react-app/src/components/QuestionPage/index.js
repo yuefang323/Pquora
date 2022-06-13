@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import NavBar from "../NavBar";
 import * as answerActions from "../../store/answers";
+import * as questionsActions from "../../store/questions";
 
 import EditQuestionModal from "./EditQuestionModal";
 import DeleteQuestionModal from "./DeleteQuestionModal";
@@ -34,6 +35,7 @@ const QuestionPage = () => {
         if (questionId) {
             dispatch(answerActions.getAnswersFromAQuestion(questionId));
         }
+        dispatch(questionsActions.getQuestion(questionId));
     }, [questionId, dispatch]);
 
     return (
@@ -42,8 +44,8 @@ const QuestionPage = () => {
             <div className="single-question-info">
                 <h2 className="a-question-content">{questionContent}</h2>
                 <div className="edit-question-btn">
-                    {qOwnerId !== user.id && <AddAnswerModal />}
-                    {qOwnerId === user.id && (
+                    {qOwnerId !== user?.id && <AddAnswerModal />}
+                    {qOwnerId === user?.id && (
                         <div className="edit-and-delete-btns">
                             <EditQuestionModal />
                             <DeleteQuestionModal />
