@@ -9,6 +9,7 @@ import * as answerActions from "../../store/answers";
 import EditQuestionModal from "./EditQuestionModal";
 import DeleteQuestionModal from "./DeleteQuestionModal";
 import AddAnswerModal from "../AnswerPage/AddAnswerModal";
+import EditAnswerModal from "../AnswerPage/EditAnswerModal"
 import CreatedAt from "../util/CreatedAt";
 import UpdatedAt from "../util/UpdatedAt";
 
@@ -20,6 +21,7 @@ const QuestionPage = () => {
     const answers = useSelector((state) => state.answers);
     const questionContent = questions[questionId]?.content;
     const answersList = Object.values(answers);
+    // not correct, need to clear the state when question id changed
     const answersListFiltered = answersList.filter(
         (answer) => answer.question_id === parseInt(questionId)
     );
@@ -53,6 +55,12 @@ const QuestionPage = () => {
                         <div key={"answer" + obj.id}>
                             <div>
                                 <p className="answer-detail">{obj.content}</p>
+                                {obj.user_id === user.id && (
+                                    <div className="edit-delete-answer-btns">
+                                        <EditAnswerModal answerId={obj.id}/>
+                                        <button>Delete</button>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="time">

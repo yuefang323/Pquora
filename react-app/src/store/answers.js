@@ -65,7 +65,6 @@ export const getAnswersFromAQuestion = (questionId) => async (dispatch) => {
 };
 
 export const addNewAnswer = (newAnswer) => async (dispatch) => {
-    console.log("am I here???", newAnswer);
     const response = await fetch(`/api/answers/${newAnswer.id}/new`, {
         method: "POST",
         headers: {

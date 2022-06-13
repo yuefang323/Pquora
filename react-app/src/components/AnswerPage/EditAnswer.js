@@ -3,17 +3,19 @@ import { useHistory, useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as answersActions from "../../store/answers";
-import * as questionsActions from "../../store/questions";
 
-const AddAnswer = ({ setShowModal }) => {
+const EditAnswer = ({ setShowModal, answerId }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { questionId } = useParams()
+
+    const { questionId } = useParams(); 
     const [content, setContent] = useState("");
     const [errors, setErrors] = useState([]);
     const user = useSelector(state => state.session.user)
-    const questions = useSelector((state) => state.questions);
-    const curQuestion = questions[questionId].content; 
+    const answers = useSelector((state) => state.answers);
+    const questions = useSelector((state) => state.questions)
+    const curAnswer = answers[answerId]; 
+    const curQuestion = questions[questionId]; 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,11 +29,9 @@ const AddAnswer = ({ setShowModal }) => {
             setErrors(validateErrors);
             return;
         }
-        const newAnswer = { content, id: questionId };
-        const res = await dispatch(
-            answersActions.addNewAnswer(newAnswer)
-        );
-        dispatch(answersActions.addEditAnswer(res.answer));
+        const updateAnswer = { content, id: answerId };
+        dispatch(answersActions.editAnswer(updateAnswer));
+        dispatch(answersActions.getAnswer(answerId));
         setContent("");
 
         if (setShowModal) setShowModal(false);
@@ -49,7 +49,7 @@ const AddAnswer = ({ setShowModal }) => {
             <div className="add-question-modal add-questions">
                 <div className="add-question-form">
                     <p>{user.username}</p>
-                    <h2 className="form-h2">{curQuestion}</h2>
+                    <h2 className="form-h2">{curQuestion.content}</h2>
                     <div className="error-and-question-input">
                         <div className="error-list">
                             {errors &&
@@ -70,7 +70,7 @@ const AddAnswer = ({ setShowModal }) => {
                                         onChange={(e) =>
                                             setContent(e.target.value)
                                         }
-                                        placeholder='Write your answer'
+                                        placeholder={curAnswer.content}
                                         className="textarea-content"
                                     />
                                 </div>
@@ -89,4 +89,4 @@ const AddAnswer = ({ setShowModal }) => {
     );
 };
 
-export default AddAnswer;
+export default EditAnswer;
