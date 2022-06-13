@@ -29,6 +29,7 @@ const QuestionsToAnswerPage = () => {
         <div className="home-page-wrapper">
             <NavBar />
             <div className="questions-list-content">
+                <h3>Questions for you</h3>
                 {questionsOrdered.map((obj) => (
                     <div key={"question" + obj.id}>
                         <NavLink
