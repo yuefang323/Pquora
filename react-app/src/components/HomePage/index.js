@@ -5,6 +5,7 @@ import { NavLink, Redirect } from "react-router-dom";
 import NavBar from "../NavBar";
 import CreatedAt from "../util/CreatedAt";
 import UpdatedAt from "../util/UpdatedAt";
+import AskModal from "./AskModal"
 
 import * as questionsActions from "../../store/questions";
 
@@ -29,8 +30,18 @@ const HomePage = () => {
         <div className="home-page-wrapper">
             <NavBar />
             <div className="questions-list-content">
+                <div className="question-box">
+                    <p>Hi, {user.username}</p>
+                    <h2>What do you want to ask?</h2>
+                    <div className="nav-ask-question">
+                        <AskModal />
+                    </div>
+                </div>
                 {questionsOrdered.map((obj) => (
-                    <div key={"question" + obj.id}>
+                    <div
+                        key={"question" + obj.id}
+                        className="home-question-item"
+                    >
                         <NavLink
                             to={`/questions/${obj.id}`}
                             exact={true}
@@ -42,11 +53,11 @@ const HomePage = () => {
                         </NavLink>
                         <div className="time">
                             <div className="create-at-time">
-                                Created at:{' '}
+                                Created at:{" "}
                                 <CreatedAt created_at={obj.created_at} />
                             </div>
                             <div className="update-at-time">
-                                Updated at:{' '}
+                                Updated at:{" "}
                                 <UpdatedAt updated_at={obj.updated_at} />
                             </div>
                         </div>
