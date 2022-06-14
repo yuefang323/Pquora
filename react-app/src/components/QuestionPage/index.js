@@ -22,17 +22,14 @@ const QuestionPage = () => {
     const answers = useSelector((state) => state.answers);
     const questionContent = questions[questionId]?.content;
     const answersList = Object.values(answers);
-    // not correct, need to clear the state when question id changed
-    const answersListFiltered = answersList.filter(
-        (answer) => answer.question_id === parseInt(questionId)
-    );
-    const answersOrdered = answersListFiltered.sort((a, b) =>
+    const answersOrdered = answersList.sort((a, b) =>
         b.updated_at.localeCompare(a.updated_at)
     );
     const qOwnerId = questions[questionId]?.owner_id;
 
     useEffect(() => {
         if (questionId) {
+            dispatch(answerActions.clearAnswers())
             dispatch(answerActions.getAnswersFromAQuestion(questionId));
         }
         dispatch(questionsActions.getQuestion(questionId));

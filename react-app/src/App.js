@@ -5,16 +5,16 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 
-import SplashPage from "./components/SplashPage"; 
+import SplashPage from "./components/SplashPage";
 import HomePage from "./components/HomePage";
 import QuestionPage from "./components/QuestionPage";
 import QuestionsToAnswerPage from "./components/QuestionsToAnswerPage";
-
+import About from "./components/AboutMe"
 
 function App() {
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();
-	const user = useSelector((state) => state.session.user);
+    const user = useSelector((state) => state.session.user);
 
     useEffect(() => {
         (async () => {
@@ -34,8 +34,11 @@ function App() {
                     {user ? <HomePage /> : <SplashPage />}
                 </Route>
                 <Route path="/about" exact={true}>
-                    {/* <About /> */}
+                    <About />
                 </Route>
+                {/* <ProtectedRoute path="/about/pquora" exact={true}>
+                    <About />
+                </ProtectedRoute> */}
                 <ProtectedRoute path="/questions" exact={true}>
                     <QuestionsToAnswerPage />
                 </ProtectedRoute>
