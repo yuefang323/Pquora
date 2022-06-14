@@ -75,3 +75,7 @@ button {
 .question-page-wrapper {
     position: relative;
 }
+ul,
+li {
+	list-style-type: none;
+}

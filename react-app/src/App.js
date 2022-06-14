@@ -36,6 +36,9 @@ function App() {
                 <Route path="/about" exact={true}>
                     <About />
                 </Route>
+                {/* <ProtectedRoute path="/about/pquora" exact={true}>
+                    <About />
+                </ProtectedRoute> */}
                 <ProtectedRoute path="/questions" exact={true}>
                     <QuestionsToAnswerPage />
                 </ProtectedRoute>

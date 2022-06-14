@@ -44,3 +44,14 @@ a.ask-answer-btn:hover {
 	cursor: pointer;
     border-radius: 5px;
 }
+#logout {
+    background-color: white;
+}
+#logout:hover{
+    background-color: var(--gray1);
+	color: var(--red);
+	border-color: black;
+	transform: scale(1.02);
+	cursor: pointer;
+    border-radius: 5px;
+}
