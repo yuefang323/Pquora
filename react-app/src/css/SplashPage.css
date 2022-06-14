@@ -38,7 +38,7 @@
 .main-session-forms {
     display: flex;
     justify-content: center;
-    gap: 10px
+    gap: 20px
 }
 .app-title {
     text-align: center;
@@ -91,13 +91,11 @@
 }
 .login-input input,
 .signup-input input {
-	/* background-color: white; */
 	border-radius: 5px;
 	height: auto;
 	padding: 5px 10px 5px 10px;
 	caret-color: black;
 	color: black;
-	/* border: none; */
     border-color: var(--gray2);
 }
 input:focus {
@@ -108,7 +106,7 @@ input:focus {
     border-left-style: solid;
 }
 .login-form-form {
-    margin-left: 5px;
+    margin-left: 15px;
 }
 footer.splash-footer-wrap {
     color: var(--gray3);

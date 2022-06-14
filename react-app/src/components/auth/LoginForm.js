@@ -46,13 +46,17 @@ const LoginForm = () => {
     useEffect(() => {
         const el = document.getElementById("test")
         const listen = (e) => {
-            if(!el.contains(e.target)) setErrors([])
+            if(!el.contains(e.target)) {
+                    setErrors([]);
+            		setEmail("");
+                    setPassword("");
+            }
         }
         document.addEventListener("mouseup", listen)
         return () => {
-            		setErrors([]);
-            		setEmail("");
-                    setPassword("");
+            		// setErrors([]);
+            		// setEmail("");
+                    // setPassword("");
                     document.removeEventListener("mouseup", listen);
             	};
     },[])
