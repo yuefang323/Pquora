@@ -8,8 +8,8 @@ const AskModal = () => {
 
     return (
         <>
-            <div className="add-new-question-wrapper ask">
-                <button onClick={() => setShowModal(true)} className="ask-btn">
+            <div className="add-new-question-wrapper">
+                <button onClick={() => setShowModal(true)} className="ask-answer-btn">
                     <svg
                         width="24"
                         height="24"
@@ -44,7 +44,7 @@ const AskModal = () => {
                             ></path>
                         </g>
                     </svg>
-                    <div>Ask</div>
+                    <div className="ask-answer-word">Ask</div>
                 </button>
             </div>
             {showModal && (

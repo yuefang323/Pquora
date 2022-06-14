@@ -22,3 +22,25 @@ button:hover {
 	cursor: pointer;
     border-radius: 5px;
 }
+.ask-answer-btn {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--gray5);
+    background-color: white;
+    pad: 10px;
+}
+.home-ask-answer-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: white;
+}
+a.ask-answer-btn:hover {
+    background-color: var(--gray1);
+	color: var(--red);
+	border-color: black;
+	transform: scale(1.02);
+	cursor: pointer;
+    border-radius: 5px;
+}

@@ -65,10 +65,8 @@ p.question-detail:hover {
     border-color: var(--gray3);
     padding: 10px;
 }
-button .ask-btn {
-    background-color: none;
-
-}
-.add-new-question-wrapper.ask {
-    background-color: none;
+.ask-answer-word {
+    color: var(--gray5);
+    font-size: 15px;
+    font-weight: 600px;
 }
