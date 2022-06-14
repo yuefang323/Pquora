@@ -29,7 +29,7 @@ const QuestionPage = () => {
 
     useEffect(() => {
         if (questionId) {
-            dispatch(answerActions.clearAnswers())
+            // dispatch(answerActions.clearAnswers())
             dispatch(answerActions.getAnswersFromAQuestion(questionId));
         }
         dispatch(questionsActions.getQuestion(questionId));

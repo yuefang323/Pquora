@@ -35,20 +35,34 @@ const LoginForm = () => {
         setPassword(e.target.value);
     };
 
+    // useEffect(() => {
+	// 	return () => {
+	// 		setErrors([]);
+	// 		setEmail("");
+    //         setPassword("");
+	// 	};
+	// }, []);
+
     useEffect(() => {
-		return () => {
-			setErrors([]);
-			setEmail("");
-            setPassword("");
-		};
-	}, []);
+        const el = document.getElementById("test")
+        const listen = (e) => {
+            if(!el.contains(e.target)) setErrors([])
+        }
+        document.addEventListener("mouseup", listen)
+        return () => {
+            		setErrors([]);
+            		setEmail("");
+                    setPassword("");
+                    document.removeEventListener("mouseup", listen);
+            	};
+    },[])
 
     if (user) {
         return <Redirect to="/" />;
     }
 
     return (
-        <div className="login-form-container">
+        <div className="login-form-container" id="test">
             <form className="login-form-form" onSubmit={onLogin}>
                 <div className="error-list">
                     {errors.map((error, ind) => (
