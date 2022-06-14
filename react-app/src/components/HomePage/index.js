@@ -40,7 +40,7 @@ const HomePage = () => {
                         <div>
                             <Link
                                 to="/questions"
-                                exact={true}
+                                exact="true"
                                 className="ask-answer-link"
                                 target="_blank"
                             >
@@ -51,28 +51,28 @@ const HomePage = () => {
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <g
-                                        stroke-width="1.5"
+                                        strokeWidth="1.5"
                                         fill="none"
-                                        fill-rule="evenodd"
+                                        fillRule="evenodd"
                                     >
                                         <path
                                             d="M18.571 5.429h0a2 2 0 0 1 0 2.828l-9.9 9.9-4.24 1.416 1.412-4.245 9.9-9.9h0a2 2 0 0 1 2.828 0Z"
-                                            class="icon_svg-stroke"
+                                            className="icon_svg-stroke"
                                             stroke="#666"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         ></path>
                                         <path
-                                            class="icon_svg-fill_as_stroke"
+                                            className="icon_svg-fill_as_stroke"
                                             fill="#666"
                                             d="m4.429 19.571 2.652-.884-1.768-1.768z"
                                         ></path>
                                         <path
                                             d="M14.5 19.5h5v-5m-10-10h-5v5"
-                                            class="icon_svg-stroke"
+                                            className="icon_svg-stroke"
                                             stroke="#666"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         ></path>
                                     </g>
                                 </svg>
