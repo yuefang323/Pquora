@@ -13,14 +13,17 @@ import EditAnswerModal from "../AnswerPage/EditAnswerModal";
 import DeleteAnswerModal from "../AnswerPage/DeleteAnswerModal";
 import CreatedAt from "../util/CreatedAt";
 import UpdatedAt from "../util/UpdatedAt";
+import NotFound from "../404Page";
 
 const QuestionPage = () => {
     const dispatch = useDispatch();
+    // const history = useHistory();
     const user = useSelector((state) => state.session.user);
-    const { questionId } = useParams();
+    const questionId = parseInt(useParams().questionId, 10);
     const questions = useSelector((state) => state.questions);
     const answers = useSelector((state) => state.answers);
     const questionContent = questions[questionId]?.content;
+    // console.log("quesions....", questions)
     const questionOwner = questions[questionId]?.owner_name;
     const answersList = Object.values(answers);
     // const answersList = questions[questionId]?.answers;
@@ -28,15 +31,23 @@ const QuestionPage = () => {
         b.updated_at.localeCompare(a.updated_at)
     );
     const qOwnerId = questions[questionId]?.owner_id;
+    // console.log("xxxxxx", questionContent)
+
+    // if (!questionContent) history.push("/notfound")
 
     useEffect(() => {
+        dispatch(questionsActions.getQuestion(questionId));
         if (questionId) {
             dispatch(answersActions.clearAnswers());
             dispatch(answersActions.getAnswersFromAQuestion(questionId));
         }
-        dispatch(questionsActions.getQuestion(questionId));
+        // if (!questionContent) history.push("/notfound")
     }, [questionId, dispatch]);
-
+    if (!questionContent)
+        return (
+            // <Redirect to="/not-found" />
+            <NotFound />
+        );
     return (
         <div className="question-page-wrapper">
             <NavBar />
@@ -73,7 +84,9 @@ const QuestionPage = () => {
                         >
                             <div>
                                 <p className="answer-detail">{obj.content}</p>
-                                <p className="question-answer-owner">Answered by: {obj.user_name}</p>
+                                <p className="question-answer-owner">
+                                    Answered by: {obj.user_name}
+                                </p>
                                 {obj.user_id === user.id && (
                                     <div className="edit-and-delete-btns">
                                         <EditAnswerModal answerId={obj.id} />

@@ -40,25 +40,24 @@ function App() {
                 {/* <ProtectedRoute path="/about/pquora" exact={true}>
                     <About />
                 </ProtectedRoute> */}
-                <ProtectedRoute path="/questions" exact={true} loaded={loaded}>
+                <ProtectedRoute path="/questions" exact={true}>
                     <QuestionsToAnswerPage />
                 </ProtectedRoute>
                 <ProtectedRoute
                     path="/questions/:questionId"
                     exact={true}
-                    loaded={loaded}
                 >
                     <QuestionPage />
                 </ProtectedRoute>
                 {/* <ProtectedRoute path="/users/:userId" exact={true}>
                     <User />
                 </ProtectedRoute> */}
-                <ProtectedRoute>
+                {/* <ProtectedRoute>
                     <NotFound />
-                </ProtectedRoute>
-                {/* <Route>
+                </ProtectedRoute> */}
+                <Route>
                     <NotFound />
-                </Route> */}
+                </Route>
             </Switch>
         </BrowserRouter>
     );
