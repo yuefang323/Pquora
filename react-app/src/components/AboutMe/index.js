@@ -69,7 +69,7 @@ const About = () => {
                                 />
                             </a>
                             <a
-                                href="https://www.linkedin.com/in/fang-yue-7b3091241/"
+                                href="https://www.linkedin.com/in/fang-yue-7b3091241"
                                 target="_blank"
                                 rel="noreferrer"
                             >
