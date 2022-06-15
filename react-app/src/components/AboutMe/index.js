@@ -1,14 +1,14 @@
-import { useSelector } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+// import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import pic from "../../assets/about.png";
 import git from "../../assets/git-logo.png";
 import linkedin from "../../assets/linkedin-logo.png";
 
 const About = () => {
-    const user = useSelector((state) => state.session.user);
+    // const user = useSelector((state) => state.session.user);
 
-    if (user) return <Redirect to="/" />;
+    // if (user) return <Redirect to="/" />;
     return (
         <div className="splash">
             <nav className="about-nav-bar">
