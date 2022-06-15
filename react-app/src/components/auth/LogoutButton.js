@@ -13,9 +13,8 @@ const LogoutButton = () => {
   const onLogout = async (e) => {
     dispatch(clearQuestions());
     dispatch(clearAnswers());
-    await dispatch(logout());
-    // dispatch()
     history.push("/");
+    await dispatch(logout());
   };
 
   return (
