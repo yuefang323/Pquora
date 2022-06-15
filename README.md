@@ -87,3 +87,8 @@ npm start
 ![question_page](https://user-images.githubusercontent.com/94598069/173951648-7c987ea7-aff3-4e4c-a8c6-974984b9d0f0.png)
 ### About Page
 ![about_page](https://user-images.githubusercontent.com/94598069/173951061-043db5c0-4297-43ad-b0ba-39f7e7ee6754.png)
+
+# Future Features
+- Tags feature
+- Search feature
+- User profile
