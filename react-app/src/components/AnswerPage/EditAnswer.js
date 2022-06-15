@@ -52,7 +52,7 @@ const EditAnswer = ({ setShowModal, answerId }) => {
                 <div className="add-question-form">
                     <h3>Edit your answer</h3>
                     <p>{user.username}</p>
-                    <h2 className="form-h2">{curQuestion.content}</h2>
+                    <h2 className="form-h4">{curQuestion.content}</h2>
                     <div className="error-and-question-input">
                         <div className="error-list">
                             {errors &&
@@ -77,10 +77,19 @@ const EditAnswer = ({ setShowModal, answerId }) => {
                                 </div>
                             </div>
                             <div className="form-buttons">
-                                <button onClick={cancelButton} type="reset">
+                                <button
+                                    onClick={cancelButton}
+                                    type="reset"
+                                    className="cancel-add-btn edit-answer"
+                                >
                                     Cancel
                                 </button>
-                                <button type="submit">Post</button>
+                                <button
+                                    type="submit"
+                                    className="cancel-add-btn edit-answer"
+                                >
+                                    Post
+                                </button>
                             </div>
                         </form>
                     </div>

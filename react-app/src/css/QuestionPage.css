@@ -4,27 +4,28 @@
     flex-direction: column;
     justify-content: center;
     position: absolute;
-    left: 25%; 
-    right: 30%; 
+    left: 25%;
+    right: 30%;
     padding: 20px;
     margin: 20px;
-    margin-top: 150px; 
+    margin-top: 150px;
     height: auto;
     text-overflow: ellipsis;
     box-sizing: border-box;
     overflow-wrap: break-word;
-    z-index: -1; 
+    z-index: -1;
 }
 .form-h2 {
     width: fit-content;
     margin: auto;
     margin-top: 30px;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 .question-owner {
     font-size: 16px;
-    padding: 0px; 
-    margin: 0px; 
+    padding: 0px;
+    margin: 0px;
+    color: #85144b;
 }
 .edit-and-delete-btns {
     display: inline-flex;
@@ -46,5 +47,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+.svg-pic {
+    /* background-color: var(--red2); */
+    width: 24px;
+    height: 24px;
+    vertical-align: top;
+    border-radius: 5px;
 }
 

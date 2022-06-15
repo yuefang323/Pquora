@@ -70,7 +70,7 @@ const QuestionPage = () => {
                             <div>
                                 <p className="answer-detail">{obj.content}</p>
                                 {obj.user_id === user.id && (
-                                    <div className="edit-delete-answer-btns">
+                                    <div className="edit-and-delete-btns">
                                         <EditAnswerModal answerId={obj.id} />
                                         <DeleteAnswerModal answerId={obj.id} />
                                     </div>

@@ -13,6 +13,7 @@
 @import url("./css/buttons.css");
 @import url("./css/About.css");
 @import url("./css/DeleteQuestion.css");
+@import url("./css/AddAnswer.css");
 
 :root {
     --white: #ffffff;
@@ -27,6 +28,7 @@
     --blue: #0ba6ff;
     --blue2: #2e69ff; 
     --yellow: #feef7b;
+    --orange: #FF851B; 
 }
 
 html,

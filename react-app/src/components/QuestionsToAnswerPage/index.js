@@ -33,6 +33,7 @@ const QuestionsToAnswerPage = () => {
             <div className="questions-list-content">
                 <span className="question-page-title">
                     <svg
+                        className="svg-pic"
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
@@ -51,7 +52,8 @@ const QuestionsToAnswerPage = () => {
                     <h3>Questions for you</h3>
                 </span>
                 {questionsOrdered.map((obj) => (
-                    <div key={"question" + obj.id}>
+                    <div key={"question" + obj.id}  className="home-question-item">
+                        <p className="question-owner">Ask by: {obj.owner_name}</p>
                         <NavLink
                             to={`/questions/${obj.id}`}
                             exact={true}
