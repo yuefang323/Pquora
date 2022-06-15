@@ -13,7 +13,7 @@
 @import url("./css/buttons.css");
 @import url("./css/About.css");
 @import url("./css/DeleteQuestion.css");
-@import url("./css/AddAnswer.css");
+@import url("./css/Answer.css");
 
 :root {
     --white: #ffffff;

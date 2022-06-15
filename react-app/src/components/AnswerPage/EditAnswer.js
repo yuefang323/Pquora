@@ -50,8 +50,10 @@ const EditAnswer = ({ setShowModal, answerId }) => {
         <>
             <div className="add-question-modal add-questions">
                 <div className="add-question-form">
-                    <h3>Edit your answer</h3>
-                    <p>{user.username}</p>
+                    <div className="edit-answer-title">
+                        <h3>Edit your answer</h3>
+                        <p className="answer-owner">{user.username}</p>
+                    </div>
                     <h2 className="form-h4">{curQuestion.content}</h2>
                     <div className="error-and-question-input">
                         <div className="error-list">
