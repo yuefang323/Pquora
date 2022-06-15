@@ -24,4 +24,5 @@ class Answer(db.Model):
             'question_id': self.question_id,
             'created_at': self.created_at.isoformat(),
             'updated_at': self.updated_at.isoformat(),
+            'user_name': self.user.username, 
         }

@@ -67,12 +67,14 @@
     flex-direction: column;
     justify-content: flex-start;
     justify-items: flex-start;
-    width: 102%;
+    width: 100%;
+    /* margin-bottom: 80px; */
 }
 .error-list div {
 	padding: 5px;
 	color: var(--red2);
 	font-weight: bold;
+    font-size: 11px; 
 }
 .login-input,
 .signup-input {

@@ -12,6 +12,7 @@
 @import url("./css/QuestionPage.css");
 @import url("./css/buttons.css");
 @import url("./css/About.css");
+@import url("./css/DeleteQuestion.css");
 
 :root {
     --white: #ffffff;
@@ -22,6 +23,7 @@
     --gray5: #636466; 
     --red: rgb(185, 43, 39);
     --red2: #f40004;
+    --red3: #aa110c;
     --blue: #0ba6ff;
     --blue2: #2e69ff; 
     --yellow: #feef7b;
@@ -36,7 +38,7 @@ body {
 	padding: 0;
 	margin: 0;
     box-sizing: border-box;
-	/* overflow: hidden; */
+	overflow-wrap: break-word;
 }
 
 a,

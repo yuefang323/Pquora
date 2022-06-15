@@ -1,6 +1,7 @@
 .login-btn,
 .demo-login-btn,
-.signup-btn {
+.signup-btn,
+.cancel-add-btn {
 	cursor: pointer;
     background-color: var(--blue);
     color: white; 
@@ -36,22 +37,39 @@ button:hover {
     justify-content: space-evenly;
     background-color: white;
 }
-a.ask-answer-btn:hover {
-    background-color: var(--gray1);
-	color: var(--red);
-	border-color: black;
-	transform: scale(1.02);
-	cursor: pointer;
-    border-radius: 5px;
-}
+
 #logout {
     background-color: white;
 }
 #logout:hover{
-    background-color: var(--gray1);
 	color: var(--red);
 	border-color: black;
 	transform: scale(1.02);
 	cursor: pointer;
     border-radius: 5px;
+}
+.add-question-btn {
+    cursor: pointer;
+    background-color: var(--red);
+    color: white; 
+	border: none;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: bold;
+	transition: all 0.25s;
+    border-radius: 5px;
+    margin: 5px;
+    margin-left: 3px; 
+    padding: 5px;
+}
+.add-question-btn:hover {
+    background-color: var(--red3);
+	color: white;
+	border-color: black;
+	transform: scale(1.01);
+	cursor: pointer;
+    border-radius: 5px;
+}
+.cancel-add-btn.delete {
+    width: 60px;
 }

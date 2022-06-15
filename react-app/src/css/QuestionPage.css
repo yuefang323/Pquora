@@ -15,3 +15,36 @@
     overflow-wrap: break-word;
     z-index: -1; 
 }
+.form-h2 {
+    width: fit-content;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 20px; 
+}
+.question-owner {
+    font-size: 16px;
+    padding: 0px; 
+    margin: 0px; 
+}
+.edit-and-delete-btns {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+    margin-left: -10px;
+}
+.edit-btn {
+    size: 20px;
+}
+.fa-solid.fa-trash-can.fa-fw {
+    pad: 10px;
+    /* margin: 5px; */
+}
+.question-count-wrapper {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+

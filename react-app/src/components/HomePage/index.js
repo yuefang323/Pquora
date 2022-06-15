@@ -32,17 +32,18 @@ const HomePage = () => {
             <div className="questions-list-content">
                 <div className="question-box">
                     <p>Hi, {user.username}</p>
-                    <h2>What do you want to ask or share?</h2>
+                    <h2 className="box-word">What do you want to ask or share?</h2>
                     <div className="home-ask-answer-btns">
                         <div className="nav-ask-question">
                             <AskModal />
                         </div>
-                        <div>
+                        <button className="ask-answer-link" id="aa-btn">
                             <Link
                                 to="/questions"
                                 exact="true"
-                                className="ask-answer-link"
+                                className="ask-answer-btn"
                                 target="_blank"
+                                id="aa-btn"
                             >
                                 <svg
                                     width="24"
@@ -78,7 +79,7 @@ const HomePage = () => {
                                 </svg>
                                 <div className="ask-answer-word">Answer</div>
                             </Link>
-                        </div>
+                        </button>
                     </div>
                 </div>
                 {questionsOrdered.map((obj) => (
@@ -86,12 +87,13 @@ const HomePage = () => {
                         key={"question" + obj.id}
                         className="home-question-item"
                     >
+                        <p className="question-owner">Ask by: {obj.owner_name}</p>
                         <NavLink
                             to={`/questions/${obj.id}`}
                             exact={true}
                             className="question-detail"
                         >
-                            <div>
+                            <div className="question-detail">
                                 <p className="question-detail">{obj.content}</p>
                             </div>
                         </NavLink>

@@ -40,12 +40,12 @@ const QuestionsToAnswerPage = () => {
                     >
                         <path
                             d="M15.004 18.5v-2.67A7.009 7.009 0 0 0 19 9.5a7 7 0 1 0-10.002 6.326V18.5h6.006ZM12 8l-2 3h4l-2 3m-2.235 6.5a2.99 2.99 0 0 0 2.235 1c.886 0 1.683-.385 2.232-.996"
-                            class="icon_svg-stroke"
+                            className="icon_svg-stroke"
                             stroke="#666"
-                            stroke-width="1.5"
+                            strokeWidth="1.5"
                             fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         ></path>
                     </svg>
                     <h3>Questions for you</h3>

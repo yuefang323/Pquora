@@ -9,7 +9,11 @@ const AskModal = () => {
     return (
         <>
             <div className="add-new-question-wrapper">
-                <button onClick={() => setShowModal(true)} className="ask-answer-btn">
+                <button
+                    onClick={() => setShowModal(true)}
+                    className="ask-answer-btn"
+                    id="aa-btn"
+                >
                     <svg
                         width="24"
                         height="24"

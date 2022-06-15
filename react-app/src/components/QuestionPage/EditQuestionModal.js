@@ -9,7 +9,9 @@ const EditQuestionModal = () => {
     return (
         <>
             <div className="add-new-question-wrapper">
-                <button onClick={() => setShowModal(true)}>📝 Edit</button>
+                <button onClick={() => setShowModal(true)} className="edit-btn">
+                    📝 Edit
+                </button>
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

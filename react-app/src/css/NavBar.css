@@ -15,6 +15,7 @@
 .nav-right-side {
     margin: 20px;
     margin-right: 10%;
+    gap: 20px;
 }
 .nav-left-side {
     margin: 20px;

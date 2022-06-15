@@ -9,7 +9,12 @@ const AddQuestionModal = () => {
     return (
         <>
             <div className="add-new-question-wrapper">
-                <button onClick={() => setShowModal(true)}>Add question</button>
+                <button
+                    onClick={() => setShowModal(true)}
+                    className="add-question-btn"
+                >
+                    Add question
+                </button>
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
