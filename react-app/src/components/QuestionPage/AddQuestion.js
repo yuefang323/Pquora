@@ -77,10 +77,10 @@ const AddQuestion = ({ setShowModal }) => {
                                 </div>
                             </div>
                             <div className="form-buttons">
-                                <button onClick={cancelButton} type="reset">
+                                <button className="cancel-add-btn" onClick={cancelButton} type="reset">
                                     Cancel
                                 </button>
-                                <button type="submit">Add question</button>
+                                <button className="cancel-add-btn" type="submit">Add question</button>
                             </div>
                         </form>
                     </div>

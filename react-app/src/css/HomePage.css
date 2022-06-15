@@ -35,6 +35,7 @@ p.question-detail {
     box-sizing: border-box;
     overflow-wrap: break-word;
     text-overflow: ellipsis;
+    margin-top: 10px; 
 }
 p.question-detail:hover {
     color: var(--red);
@@ -69,4 +70,32 @@ p.question-detail:hover {
     color: var(--gray5);
     font-size: 15px;
     font-weight: 600px;
+}
+.ask-answer-link {
+    display: inline-flex; 
+    align-items: center;
+    gap: 3px; 
+    background-color: white;
+}
+.ask-answer-link:hover {
+    background-color: var(--yellow);
+	color: var(--red);
+	border-color: black;
+	transform: scale(1.02);
+	cursor: pointer;
+    border-radius: 5px;
+}
+.box-word {
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 20px;
+}
+#aa-btn:hover button.ask-answer-link, #aa-btn:hover a.ask-answer-btn{
+    text-decoration: none;
+    background-color: var(--yellow);
+    color: var(--red); 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
 }

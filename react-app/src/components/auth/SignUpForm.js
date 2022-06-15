@@ -43,21 +43,28 @@ const SignUpForm = () => {
     };
 
     useEffect(() => {
-		return () => {
-			setErrors([]);
-			setUsername("");
-			setEmail("");
-			setPassword("");
-			setRepeatPassword("");
-		};
-	}, []);
+        const el = document.getElementById("test1")
+        const listen = (e) => {
+            if(!el.contains(e.target)) {
+                setErrors([]);
+                setUsername("");
+                setEmail("");
+                setPassword("");
+                setRepeatPassword("");
+            }
+        }
+        document.addEventListener("mouseup", listen)
+        return () => {
+                    document.removeEventListener("mouseup", listen);
+            	};
+    },[])
 
     if (user) {
         return <Redirect to="/" />;
     }
 
     return (
-        <div className="signup-form-container">
+        <div className="signup-form-container" id="test1">
             <form onSubmit={onSignUp}>
                 <div className="error-list">
                     {errors.map((error, ind) => (

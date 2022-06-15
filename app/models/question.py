@@ -26,4 +26,5 @@ class Question(db.Model):
             'tag_id': self.tag_id,
             'created_at': self.created_at.isoformat(),
             'updated_at': self.updated_at.isoformat(),
+            'owner_name': self.user.username, 
         }

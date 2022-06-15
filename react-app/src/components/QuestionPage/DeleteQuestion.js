@@ -10,15 +10,15 @@ const DeleteQuestion = ({ setShowModal }) => {
 
     const [errors, setErrors] = useState([]);
     const { questionId } = useParams();
-    const questionIdNum = parseInt(questionId)
+    const questionIdNum = parseInt(questionId);
     const questions = useSelector((state) => state.questions);
     const content = questions[questionId].content;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const questionToDelete = {
-            id: questionIdNum, 
-            content
+            id: questionIdNum,
+            content,
         };
         const res = await dispatch(
             questionsActions.deleteThisQuestion(questionToDelete)
@@ -39,18 +39,28 @@ const DeleteQuestion = ({ setShowModal }) => {
     };
 
     return (
-        <div className="question-delete-form">
+        <div className="add-question-modal delete-question">
             <h4 className="warning-message">
                 Do you really want to delete this question? This action cannot
                 be undone.
             </h4>
-            <div> {content} </div>
-            <button className="yes-button" type="submit" onClick={handleSubmit}>
-                Yes
-            </button>
-            <button onClick={cancelButton} type="reset">
-                Cancel
-            </button>
+            <div> Your question: {content} </div>
+            <div className="form-buttons delete">
+                <button
+                    className="cancel-add-btn delete"
+                    type="submit"
+                    onClick={handleSubmit}
+                >
+                    Yes
+                </button>
+                <button
+                    className="cancel-add-btn delete"
+                    onClick={cancelButton}
+                    type="reset"
+                >
+                    Cancel
+                </button>
+            </div>
         </div>
     );
 };

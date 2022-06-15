@@ -7,12 +7,12 @@ import * as answersActions from "../../store/answers";
 const AddAnswer = ({ setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { questionId } = useParams()
+    const { questionId } = useParams();
     const [content, setContent] = useState("");
     const [errors, setErrors] = useState([]);
-    const user = useSelector(state => state.session.user)
+    const user = useSelector((state) => state.session.user);
     const questions = useSelector((state) => state.questions);
-    const curQuestion = questions[questionId].content; 
+    const curQuestion = questions[questionId].content;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,9 +27,7 @@ const AddAnswer = ({ setShowModal }) => {
             return;
         }
         const newAnswer = { content, id: questionId };
-        const res = await dispatch(
-            answersActions.addNewAnswer(newAnswer)
-        );
+        const res = await dispatch(answersActions.addNewAnswer(newAnswer));
         dispatch(answersActions.addEditAnswer(res.answer));
         setContent("");
 
@@ -47,8 +45,10 @@ const AddAnswer = ({ setShowModal }) => {
         <>
             <div className="add-question-modal add-questions">
                 <div className="add-question-form">
-                    <p>{user.username}</p>
-                    <h2 className="form-h2">{curQuestion}</h2>
+                    <div className="edit-answer-title">
+                    <p className="session-owner add">{user.username}</p>
+                    <h2 className="form-h4">{curQuestion}</h2>
+                    </div>
                     <div className="error-and-question-input">
                         <div className="error-list">
                             {errors &&
@@ -69,16 +69,25 @@ const AddAnswer = ({ setShowModal }) => {
                                         onChange={(e) =>
                                             setContent(e.target.value)
                                         }
-                                        placeholder='Write your answer'
+                                        placeholder="Write your answer"
                                         className="textarea-content"
                                     />
                                 </div>
                             </div>
                             <div className="form-buttons">
-                                <button onClick={cancelButton} type="reset">
+                                <button
+                                    onClick={cancelButton}
+                                    type="reset"
+                                    className="cancel-add-btn"
+                                >
                                     Cancel
                                 </button>
-                                <button type="submit">Post</button>
+                                <button
+                                    type="submit"
+                                    className="cancel-add-btn"
+                                >
+                                    Post
+                                </button>
                             </div>
                         </form>
                     </div>

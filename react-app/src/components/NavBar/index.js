@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import ReactTooltip from "react-tooltip";
 import AddQuestionModal from "../QuestionPage/AddQuestionModel";

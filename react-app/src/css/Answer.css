@@ -1,0 +1,33 @@
+.form-h4 {
+    font-size: 14px;
+    padding: 5px;
+    margin: 0;
+}
+.edit-answer-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+}
+.form-buttons.answer {
+    margin-bottom: 20px;
+}
+.edit-your-answer {
+    margin: 0;
+}
+/* .add-question-input.input-height.answer {
+    height: 200px;
+} */
+.session-owner {
+    margin: 10px 0px;
+    color: #85144b;
+}
+.session-owner.add {
+    margin: 10px 5px;
+}
+.question-answer-owner {
+    font-size: 13px;
+    padding: 0px;
+    margin: 0px;
+    color: var(--orange);
+}

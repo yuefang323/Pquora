@@ -28,7 +28,7 @@ const About = () => {
                 </NavLink>
             </nav>
             <div className="about-img">
-                <img src={pic} className="about-img"></img>
+                <img src={pic} className="about-img" alt="Mission"></img>
             </div>
             <main className="about-ctrl">
                 <div className="pquora-mission">

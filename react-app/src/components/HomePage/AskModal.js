@@ -9,7 +9,11 @@ const AskModal = () => {
     return (
         <>
             <div className="add-new-question-wrapper">
-                <button onClick={() => setShowModal(true)} className="ask-answer-btn">
+                <button
+                    onClick={() => setShowModal(true)}
+                    className="ask-answer-btn"
+                    id="aa-btn"
+                >
                     <svg
                         width="24"
                         height="24"
@@ -17,20 +21,20 @@ const AskModal = () => {
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <g
-                            class="icon_svg-stroke"
+                            className="icon_svg-stroke"
                             stroke="#666"
-                            stroke-width="1.5"
+                            strokeWidth="1.5"
                             fill="none"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                         >
                             <g transform="translate(9 7)">
                                 <path
                                     d="M3 6v-.5A2.5 2.5 0 1 0 .5 3"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                 ></path>
                                 <circle
-                                    class="icon_svg-fill_as_stroke"
+                                    className="icon_svg-fill_as_stroke"
                                     fill="#666"
                                     cx="3"
                                     cy="8.5"
@@ -40,7 +44,7 @@ const AskModal = () => {
                             </g>
                             <path
                                 d="M7.5 4h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-3L9 22v-3H7.5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"
-                                stroke-linejoin="round"
+                                strokeLinejoin="round"
                             ></path>
                         </g>
                     </svg>
