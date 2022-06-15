@@ -19,14 +19,15 @@ const DeleteQuestion = ({ setShowModal, answerId }) => {
             id: parseInt(answerId),
             content,
         };
-        console.log("xxxxxx", answerToDelete);
+        // console.log("xxxxxx", answerToDelete);
         const res = await dispatch(
             answersActions.deleteThisAnswer(answerToDelete)
         );
 
         if (!res.errors) {
             setShowModal(false);
-            dispatch(answersActions.addEditAnswer(answerId));
+            // dispatch(answersActions.addEditAnswer(answerId));
+            dispatch(answersActions.getAnswersFromAQuestion(curAnswer.question_id))
             history.push(`/questions/${curAnswer.question_id}`);
         } else {
             setErrors(res.errors);

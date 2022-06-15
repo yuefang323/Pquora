@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 
 import NavBar from "../NavBar";
-import * as answerActions from "../../store/answers";
+import * as answersActions from "../../store/answers";
 import * as questionsActions from "../../store/questions";
 
 import EditQuestionModal from "./EditQuestionModal";
@@ -23,6 +23,7 @@ const QuestionPage = () => {
     const questionContent = questions[questionId]?.content;
     const questionOwner = questions[questionId]?.owner_name;
     const answersList = Object.values(answers);
+    // const answersList = questions[questionId]?.answers;
     const answersOrdered = answersList.sort((a, b) =>
         b.updated_at.localeCompare(a.updated_at)
     );
@@ -30,8 +31,8 @@ const QuestionPage = () => {
 
     useEffect(() => {
         if (questionId) {
-            dispatch(answerActions.clearAnswers());
-            dispatch(answerActions.getAnswersFromAQuestion(questionId));
+            dispatch(answersActions.clearAnswers());
+            dispatch(answersActions.getAnswersFromAQuestion(questionId));
         }
         dispatch(questionsActions.getQuestion(questionId));
     }, [questionId, dispatch]);

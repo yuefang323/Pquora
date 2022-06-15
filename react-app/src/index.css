@@ -14,6 +14,7 @@
 @import url("./css/About.css");
 @import url("./css/DeleteQuestion.css");
 @import url("./css/Answer.css");
+@import url("./css/NotFount.css");
 
 :root {
     --white: #ffffff;

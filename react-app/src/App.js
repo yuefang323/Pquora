@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import User from "./components/User";
+// import User from "./components/User";
 import { authenticate } from "./store/session";
 
 import SplashPage from "./components/SplashPage";
@@ -10,7 +10,7 @@ import HomePage from "./components/HomePage";
 import QuestionPage from "./components/QuestionPage";
 import QuestionsToAnswerPage from "./components/QuestionsToAnswerPage";
 import About from "./components/AboutMe";
-import NotFound from "./components/404Page"
+import NotFound from "./components/404Page";
 
 function App() {
     const [loaded, setLoaded] = useState(false);
@@ -40,21 +40,25 @@ function App() {
                 {/* <ProtectedRoute path="/about/pquora" exact={true}>
                     <About />
                 </ProtectedRoute> */}
-                <ProtectedRoute path="/questions" exact={true}>
+                <ProtectedRoute path="/questions" exact={true} loaded={loaded}>
                     <QuestionsToAnswerPage />
                 </ProtectedRoute>
-                <ProtectedRoute path="/questions/:questionId" exact={true}>
+                <ProtectedRoute
+                    path="/questions/:questionId"
+                    exact={true}
+                    loaded={loaded}
+                >
                     <QuestionPage />
                 </ProtectedRoute>
-                <ProtectedRoute path="/users/:userId" exact={true}>
+                {/* <ProtectedRoute path="/users/:userId" exact={true}>
                     <User />
-                </ProtectedRoute>
-                <ProtectedRoute path="/" exact={true}>
-                    <h1>My Home Page</h1>
-                </ProtectedRoute>
+                </ProtectedRoute> */}
                 <ProtectedRoute>
                     <NotFound />
                 </ProtectedRoute>
+                {/* <Route>
+                    <NotFound />
+                </Route> */}
             </Switch>
         </BrowserRouter>
     );
