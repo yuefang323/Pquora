@@ -9,7 +9,8 @@ import SplashPage from "./components/SplashPage";
 import HomePage from "./components/HomePage";
 import QuestionPage from "./components/QuestionPage";
 import QuestionsToAnswerPage from "./components/QuestionsToAnswerPage";
-import About from "./components/AboutMe"
+import About from "./components/AboutMe";
+import NotFound from "./components/404Page"
 
 function App() {
     const [loaded, setLoaded] = useState(false);
@@ -50,6 +51,9 @@ function App() {
                 </ProtectedRoute>
                 <ProtectedRoute path="/" exact={true}>
                     <h1>My Home Page</h1>
+                </ProtectedRoute>
+                <ProtectedRoute>
+                    <NotFound />
                 </ProtectedRoute>
             </Switch>
         </BrowserRouter>

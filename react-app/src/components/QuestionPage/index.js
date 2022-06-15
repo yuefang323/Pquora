@@ -66,9 +66,13 @@ const QuestionPage = () => {
                 </div>
                 <div className="answers-lit">
                     {answersOrdered.map((obj) => (
-                        <div key={"answer" + obj.id}>
+                        <div
+                            key={"answer" + obj.id}
+                            className="home-question-item"
+                        >
                             <div>
                                 <p className="answer-detail">{obj.content}</p>
+                                <p className="question-answer-owner">Answered by: {obj.user_name}</p>
                                 {obj.user_id === user.id && (
                                     <div className="edit-and-delete-btns">
                                         <EditAnswerModal answerId={obj.id} />

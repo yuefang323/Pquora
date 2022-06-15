@@ -10,24 +10,23 @@ const DeleteQuestion = ({ setShowModal, answerId }) => {
 
     const [errors, setErrors] = useState([]);
     const answers = useSelector((state) => state.answers);
-    const curAnswer = answers[answerId]; 
-    const content = curAnswer.content
-    
+    const curAnswer = answers[answerId];
+    const content = curAnswer.content;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const answerToDelete = {
-            id: parseInt(answerId), 
-            content
+            id: parseInt(answerId),
+            content,
         };
-        console.log("xxxxxx", answerToDelete)
+        console.log("xxxxxx", answerToDelete);
         const res = await dispatch(
             answersActions.deleteThisAnswer(answerToDelete)
         );
 
         if (!res.errors) {
             setShowModal(false);
-            dispatch(answersActions.addEditAnswer(answerId))
+            dispatch(answersActions.addEditAnswer(answerId));
             history.push(`/questions/${curAnswer.question_id}`);
         } else {
             setErrors(res.errors);
@@ -40,19 +39,29 @@ const DeleteQuestion = ({ setShowModal, answerId }) => {
     };
 
     return (
-        <div className="question-delete-form">
-            <h3>Your answer</h3>
-            <div> {content} </div>
+        <div className="add-question-modal delete-question">
+            {/* <h3>Your answer</h3>
+            <div> {content} </div> */}
             <h4 className="warning-message">
-                Do you really want to delete this answer? This action cannot
-                be undone.
+                Do you really want to delete this answer? This action cannot be
+                undone.
             </h4>
-            <button className="yes-button" type="submit" onClick={handleSubmit}>
-                Confirm
-            </button>
-            <button onClick={cancelButton} type="reset">
-                Cancel
-            </button>
+            <div className="form-buttons delete">
+                <button
+                    className="cancel-add-btn delete"
+                    type="submit"
+                    onClick={handleSubmit}
+                >
+                    Yes
+                </button>
+                <button
+                    onClick={cancelButton}
+                    type="reset"
+                    className="cancel-add-btn delete"
+                >
+                    Cancel
+                </button>
+            </div>
         </div>
     );
 };

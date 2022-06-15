@@ -45,8 +45,10 @@ const AddAnswer = ({ setShowModal }) => {
         <>
             <div className="add-question-modal add-questions">
                 <div className="add-question-form">
-                    <p>{user.username}</p>
+                    <div className="edit-answer-title">
+                    <p className="session-owner add">{user.username}</p>
                     <h2 className="form-h4">{curQuestion}</h2>
+                    </div>
                     <div className="error-and-question-input">
                         <div className="error-list">
                             {errors &&

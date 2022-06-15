@@ -51,8 +51,8 @@ const EditAnswer = ({ setShowModal, answerId }) => {
             <div className="add-question-modal add-questions">
                 <div className="add-question-form">
                     <div className="edit-answer-title">
-                        <h3>Edit your answer</h3>
-                        <p className="answer-owner">{user.username}</p>
+                        <h3 className="edit-your-answer">Edit your answer</h3>
+                        <p className="session-owner">{user.username}</p>
                     </div>
                     <h2 className="form-h4">{curQuestion.content}</h2>
                     <div className="error-and-question-input">
@@ -66,7 +66,7 @@ const EditAnswer = ({ setShowModal, answerId }) => {
                             className="new-question-form"
                             onSubmit={handleSubmit}
                         >
-                            <div className="add-question-input input-height">
+                            <div className="add-question-input input-height answer">
                                 <div className="input-field">
                                     <textarea
                                         type="text"
@@ -78,7 +78,7 @@ const EditAnswer = ({ setShowModal, answerId }) => {
                                     />
                                 </div>
                             </div>
-                            <div className="form-buttons">
+                            <div className="form-buttons answer">
                                 <button
                                     onClick={cancelButton}
                                     type="reset"
