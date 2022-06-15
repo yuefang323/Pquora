@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams, useHistory, Redirect } from "react-router";
+import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 
 import NavBar from "../NavBar";
@@ -17,7 +17,7 @@ import NotFound from "../404Page";
 
 const QuestionPage = () => {
     const dispatch = useDispatch();
-    const history = useHistory(); 
+    // const history = useHistory();
     const user = useSelector((state) => state.session.user);
     const questionId = parseInt(useParams().questionId, 10);
     const questions = useSelector((state) => state.questions);
@@ -42,12 +42,12 @@ const QuestionPage = () => {
             dispatch(answersActions.getAnswersFromAQuestion(questionId));
         }
         // if (!questionContent) history.push("/notfound")
-
     }, [questionId, dispatch]);
-    if (!questionContent) return (
-    // <Redirect to="/not-found" /> 
-    <NotFound />
-    )
+    if (!questionContent)
+        return (
+            // <Redirect to="/not-found" />
+            <NotFound />
+        );
     return (
         <div className="question-page-wrapper">
             <NavBar />
@@ -84,7 +84,9 @@ const QuestionPage = () => {
                         >
                             <div>
                                 <p className="answer-detail">{obj.content}</p>
-                                <p className="question-answer-owner">Answered by: {obj.user_name}</p>
+                                <p className="question-answer-owner">
+                                    Answered by: {obj.user_name}
+                                </p>
                                 {obj.user_id === user.id && (
                                     <div className="edit-and-delete-btns">
                                         <EditAnswerModal answerId={obj.id} />
