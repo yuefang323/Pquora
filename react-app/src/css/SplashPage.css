@@ -62,6 +62,10 @@
     border-radius: 10px;
     box-shadow: 0 2px 10px 0 rgb(0 0 0 0.2);
 }
+.signup-form-form {
+    /* background-color: blue; */
+    width: 200px;
+}
 .form-buttons {
     display: flex;
     flex-direction: column;
@@ -85,6 +89,7 @@
 	margin-bottom: 3px;
 	color: black;
     font-weight: bold; 
+    padding: 5px;
 }
 .login-input label,
 .signup-input label {
@@ -109,6 +114,8 @@ input:focus {
 }
 .login-form-form {
     margin-left: 15px;
+    width: 200px;
+    /* background-color: red; */
 }
 footer.splash-footer-wrap {
     color: var(--gray3);
