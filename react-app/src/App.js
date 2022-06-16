@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
 
 import SplashPage from "./components/SplashPage";
+import SplashSignup from "./components/SplashPage/splashSignup"
 import HomePage from "./components/HomePage";
 import QuestionPage from "./components/QuestionPage";
 import QuestionsToAnswerPage from "./components/QuestionsToAnswerPage";
@@ -31,15 +32,15 @@ function App() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact={true}>
+                <Route path={["/", "/login"]} exact={true}>
                     {user ? <HomePage /> : <SplashPage />}
                 </Route>
                 <Route path="/about" exact={true}>
                     <About />
                 </Route>
-                {/* <ProtectedRoute path="/about/pquora" exact={true}>
-                    <About />
-                </ProtectedRoute> */}
+                <Route path="/signup" exact={true}>
+                    <SplashSignup />
+                </Route>
                 <ProtectedRoute path="/questions" exact={true}>
                     <QuestionsToAnswerPage />
                 </ProtectedRoute>
@@ -51,9 +52,6 @@ function App() {
                 </ProtectedRoute>
                 {/* <ProtectedRoute path="/users/:userId" exact={true}>
                     <User />
-                </ProtectedRoute> */}
-                {/* <ProtectedRoute>
-                    <NotFound />
                 </ProtectedRoute> */}
                 <Route>
                     <NotFound />
