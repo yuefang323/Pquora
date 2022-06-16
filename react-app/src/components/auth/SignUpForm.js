@@ -91,13 +91,14 @@ const SignUpForm = () => {
                     ))}
                 </div>
                 <div className="signup-input">
-                    <label>User Name</label>
+                    <label>Username</label>
                     <input
                         type="text"
                         name="username"
                         onChange={updateUsername}
                         value={username}
                         required
+                        placeholder="Your username*"
                     ></input>
                 </div>
                 <div className="signup-input">
@@ -108,6 +109,7 @@ const SignUpForm = () => {
                         onChange={updateEmail}
                         value={email}
                         required
+                        placeholder="Your email*"
                     ></input>
                 </div>
                 <div className="signup-input">
@@ -118,6 +120,7 @@ const SignUpForm = () => {
                         onChange={updatePassword}
                         value={password}
                         required
+                        placeholder="Your password*"
                     ></input>
                 </div>
                 <div className="signup-input">
@@ -128,11 +131,15 @@ const SignUpForm = () => {
                         onChange={updateRepeatPassword}
                         value={repeatPassword}
                         required={true}
+                        placeholder="Your confirm password*"
                     ></input>
                 </div>
                 <div className="form-buttons">
                     <button className="signup-btn" type="submit">
                         Sign Up
+                    </button>
+                    <button className="demo-login-btn" onClick={demoLogin}>
+                        Demo Login
                     </button>
                 </div>
             </form>
