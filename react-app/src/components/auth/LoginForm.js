@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 
-
 const LoginForm = () => {
     const [errors, setErrors] = useState([]);
     const [email, setEmail] = useState("");
@@ -35,31 +34,28 @@ const LoginForm = () => {
         setPassword(e.target.value);
     };
 
-    // useEffect(() => {
-	// 	return () => {
-	// 		setErrors([]);
-	// 		setEmail("");
-    //         setPassword("");
-	// 	};
-	// }, []);
-
     useEffect(() => {
-        const el = document.getElementById("test")
-        const listen = (e) => {
-            if(!el.contains(e.target)) {
-                    setErrors([]);
-            		setEmail("");
-                    setPassword("");
-            }
-        }
-        document.addEventListener("mouseup", listen)
-        return () => {
-            		// setErrors([]);
-            		// setEmail("");
-                    // setPassword("");
-                    document.removeEventListener("mouseup", listen);
-            	};
-    },[])
+		return () => {
+			setErrors([]);
+			setEmail("");
+            setPassword("");
+		};
+	}, []);
+
+    // useEffect(() => {
+    //     const el = document.getElementById("test")
+    //     const listen = (e) => {
+    //         if(!el.contains(e.target)) {
+    //                 setErrors([]);
+    //         		setEmail("");
+    //                 setPassword("");
+    //         }
+    //     }
+    //     document.addEventListener("mouseup", listen)
+    //     return () => {
+    //                 document.removeEventListener("mouseup", listen);
+    //         	};
+    // },[])
 
     if (user) {
         return <Redirect to="/" />;
@@ -92,7 +88,7 @@ const LoginForm = () => {
                         value={password}
                         onChange={updatePassword}
                     />
-                    <div className="form-buttons">
+                    <div className="form-buttons login">
 						<button className="login-btn" type="submit">Login</button>
 						<button className="demo-login-btn" onClick={demoLogin}>Demo Login</button>
 					</div>

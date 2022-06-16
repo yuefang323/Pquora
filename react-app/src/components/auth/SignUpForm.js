@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
+import { login } from "../../store/session";
 
 const SignUpForm = () => {
     const [errors, setErrors] = useState([]);
@@ -12,18 +13,26 @@ const SignUpForm = () => {
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
 
+    const demoLogin = (e) => {
+        e.preventDefault();
+        return dispatch(login("demo@aa.io", "password")).catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors);
+        });
+    };
+
     const onSignUp = async (e) => {
         e.preventDefault();
         if (password === repeatPassword) {
             const data = await dispatch(signUp(username, email, password));
             if (data) {
                 setErrors(data);
-            } 
+            }
         } else {
-			setErrors([
-				"Confirm Password field must be the same as the Password field",
-			]);
-		}
+            setErrors([
+                "Confirm Password field must be the same as the Password field",
+            ]);
+        }
     };
 
     const updateUsername = (e) => {
@@ -43,21 +52,31 @@ const SignUpForm = () => {
     };
 
     useEffect(() => {
-        const el = document.getElementById("test1")
-        const listen = (e) => {
-            if(!el.contains(e.target)) {
-                setErrors([]);
-                setUsername("");
-                setEmail("");
-                setPassword("");
-                setRepeatPassword("");
-            }
-        }
-        document.addEventListener("mouseup", listen)
         return () => {
-                    document.removeEventListener("mouseup", listen);
-            	};
-    },[])
+            setErrors([]);
+            setUsername("");
+            setEmail("");
+            setPassword("");
+            setRepeatPassword("");
+        };
+    }, []);
+
+    // useEffect(() => {
+    //     const el = document.getElementById("test1")
+    //     const listen = (e) => {
+    //         if(!el.contains(e.target)) {
+    //             setErrors([]);
+    //             setUsername("");
+    //             setEmail("");
+    //             setPassword("");
+    //             setRepeatPassword("");
+    //         }
+    //     }
+    //     document.addEventListener("mouseup", listen)
+    //     return () => {
+    //                 document.removeEventListener("mouseup", listen);
+    //         	};
+    // },[])
 
     if (user) {
         return <Redirect to="/" />;
@@ -72,13 +91,14 @@ const SignUpForm = () => {
                     ))}
                 </div>
                 <div className="signup-input">
-                    <label>User Name</label>
+                    <label>Username</label>
                     <input
                         type="text"
                         name="username"
                         onChange={updateUsername}
                         value={username}
                         required
+                        placeholder="Your username*"
                     ></input>
                 </div>
                 <div className="signup-input">
@@ -89,6 +109,7 @@ const SignUpForm = () => {
                         onChange={updateEmail}
                         value={email}
                         required
+                        placeholder="Your email*"
                     ></input>
                 </div>
                 <div className="signup-input">
@@ -99,6 +120,7 @@ const SignUpForm = () => {
                         onChange={updatePassword}
                         value={password}
                         required
+                        placeholder="Your password*"
                     ></input>
                 </div>
                 <div className="signup-input">
@@ -109,10 +131,16 @@ const SignUpForm = () => {
                         onChange={updateRepeatPassword}
                         value={repeatPassword}
                         required={true}
+                        placeholder="Your confirm password*"
                     ></input>
                 </div>
                 <div className="form-buttons">
-                <button className="signup-btn" type="submit">Sign Up</button>
+                    <button className="signup-btn" type="submit">
+                        Sign Up
+                    </button>
+                    <button className="demo-login-btn" onClick={demoLogin}>
+                        Demo Login
+                    </button>
                 </div>
             </form>
         </div>

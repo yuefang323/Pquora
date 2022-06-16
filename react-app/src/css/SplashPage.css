@@ -38,7 +38,8 @@
 .main-session-forms {
     display: flex;
     justify-content: center;
-    gap: 20px
+    align-items: center;
+    gap: 20px;
 }
 .app-title {
     text-align: center;
@@ -56,15 +57,18 @@
 
 .login-form-container,
 .signup-form-container {
-	display: flex;
+    display: flex;
     color: black;
     flex-direction: column;
     border-radius: 10px;
     box-shadow: 0 2px 10px 0 rgb(0 0 0 0.2);
 }
 .signup-form-form {
-    /* background-color: blue; */
     width: 200px;
+    margin-left: 10px;
+}
+.signup-form {
+    align-items: center;
 }
 .form-buttons {
     display: flex;
@@ -75,38 +79,38 @@
     /* margin-bottom: 80px; */
 }
 .error-list div {
-	padding: 5px;
-	color: var(--red2);
-	font-weight: bold;
-    font-size: 11px; 
+    padding: 5px;
+    color: var(--red2);
+    font-weight: bold;
+    font-size: 11px;
 }
 .login-input,
 .signup-input {
-	display: flex;
-	flex-direction: column;
-	gap: 2px;
-	margin-top: 3px;
-	margin-bottom: 3px;
-	color: black;
-    font-weight: bold; 
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    color: black;
+    font-weight: bold;
     padding: 5px;
 }
 .login-input label,
 .signup-input label {
-	font-size: 15px;
-    margin: 5px; 
+    font-size: 15px;
+    margin: 5px;
 }
 .login-input input,
 .signup-input input {
-	border-radius: 5px;
-	height: auto;
-	padding: 5px 10px 5px 10px;
-	caret-color: black;
-	color: black;
+    border-radius: 5px;
+    height: auto;
+    padding: 5px 10px 5px 10px;
+    caret-color: black;
+    color: black;
     border-color: var(--gray2);
 }
 input:focus {
-	outline: none;
+    outline: none;
 }
 .login-form {
     border-left: var(--gray2);
@@ -123,4 +127,15 @@ footer.splash-footer-wrap {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+.splash-login-form {
+    border-left: var(--gray2);
+    border-left-style: solid;
+}
+.splash-signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
