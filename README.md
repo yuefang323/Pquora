@@ -89,10 +89,14 @@ npm start
 
 ## ScreenShot
 
-### Splash Page
+### Splash/Login Page
 
-![splash](https://user-images.githubusercontent.com/94598069/173951276-d6a62b24-8d88-4bf4-b89b-b01b9bb1534d.png)
+![login](https://user-images.githubusercontent.com/94598069/173999362-48732e9b-bf67-4f32-97d3-73a9c1cb7b38.png)
 
+### Signup Page
+
+![signup](https://user-images.githubusercontent.com/94598069/173999442-a171fbf5-6554-46fa-bee3-ad881ef00436.png)
+  
 ### Home Page
 
 ![home-page](https://user-images.githubusercontent.com/94598069/173951575-4c8773f9-faaf-46ed-8600-4297224e3b82.png)
