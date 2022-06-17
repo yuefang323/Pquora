@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import ReactTooltip from "react-tooltip";
 import AddQuestionModal from "../QuestionPage/AddQuestionModel";
+import { useSearch } from "../../context/Query"
 
 const NavBar = () => {
+    // Search bar
+   const { search, setSearch } = useSearch()
+
     return (
         <nav className="nav-wrapper">
             <div className="nav-left-side">
@@ -35,6 +39,13 @@ const NavBar = () => {
                         <div>About</div>
                     </Link>
                 </div>
+            </div>
+            <div className="search-bar">
+                <input
+                    placeholder="Enter your question"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
             </div>
             <div className="nav-right-side">
                 <div className="nav-ask-question">
