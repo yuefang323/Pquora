@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
+import { useSearch } from "../../context/Query";
 
 import NavBar from "../NavBar";
 import CreatedAt from "../util/CreatedAt";
@@ -20,10 +21,21 @@ const QuestionsToAnswerPage = () => {
     );
 
     const dispatch = useDispatch();
+    const { search } = useSearch();
+    const [arr, setArr] = useState([]);
 
     useEffect(() => {
         dispatch(questionsActions.getAllQuestions());
     }, [dispatch]);
+
+    useEffect(() => {
+        let newArr = questionsOrdered.filter((question) =>
+            question.content
+                .toLowerCase()
+                .includes(search.toLowerCase().trim().split(/\s+/))
+        );
+        setArr(newArr);
+    }, [search, questions]);
 
     if (!user) return <Redirect to="/" />;
 
@@ -51,9 +63,14 @@ const QuestionsToAnswerPage = () => {
                     </svg>
                     <h3>Questions for you</h3>
                 </span>
-                {questionsOrdered.map((obj) => (
-                    <div key={"question" + obj.id}  className="home-question-item">
-                        <p className="question-owner">Ask by: {obj.owner_name}</p>
+                {arr.map((obj) => (
+                    <div
+                        key={"question" + obj.id}
+                        className="home-question-item"
+                    >
+                        <p className="question-owner">
+                            Ask by: {obj.owner_name}
+                        </p>
                         <NavLink
                             to={`/questions/${obj.id}`}
                             exact={true}

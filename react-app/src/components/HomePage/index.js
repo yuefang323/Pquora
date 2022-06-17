@@ -27,9 +27,13 @@ const HomePage = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        let newArr= questionsOrdered.filter(question => question.content.toLowerCase().includes(search.toLowerCase()))
+        let newArr = questionsOrdered.filter((question) =>
+            question.content
+                .toLowerCase()
+                .includes(search.toLowerCase().trim().split(/\s+/))
+        );
         setArr(newArr);
-    }, [search, questions])
+    }, [search, questions]);
 
     if (!user) return <Redirect to="/" />;
 
@@ -39,7 +43,9 @@ const HomePage = () => {
             <div className="questions-list-content">
                 <div className="question-box">
                     <p>Hi, {user.username}</p>
-                    <h2 className="box-word">What do you want to ask or share?</h2>
+                    <h2 className="box-word">
+                        What do you want to ask or share?
+                    </h2>
                     <div className="home-ask-answer-btns">
                         <div className="nav-ask-question">
                             <AskModal />
@@ -94,7 +100,9 @@ const HomePage = () => {
                         key={"question" + obj.id}
                         className="home-question-item"
                     >
-                        <p className="question-owner">Ask by: {obj.owner_name}</p>
+                        <p className="question-owner">
+                            Ask by: {obj.owner_name}
+                        </p>
                         <NavLink
                             to={`/questions/${obj.id}`}
                             exact={true}

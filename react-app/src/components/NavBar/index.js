@@ -3,11 +3,11 @@ import { NavLink, Link } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import ReactTooltip from "react-tooltip";
 import AddQuestionModal from "../QuestionPage/AddQuestionModel";
-import { useSearch } from "../../context/Query"
+import { useSearch } from "../../context/Query";
 
 const NavBar = () => {
     // Search bar
-   const { search, setSearch } = useSearch()
+    const { search, setSearch } = useSearch();
 
     return (
         <nav className="nav-wrapper">
@@ -40,13 +40,32 @@ const NavBar = () => {
                     </Link>
                 </div>
             </div>
-            <div className="center-search-bar">
-                <input
-                    placeholder="Enter your question"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="search-bar"
-                />
+            <div className="nav-center-side">
+                <div className="search-wrapper">
+                    <svg
+                        className="search-icon"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Zm10.45 2.95L16 16l4.95 4.95Z"
+                            className="icon_svg-stroke"
+                            stroke="#666"
+                            strokeWidth="1.5"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        ></path>
+                    </svg>
+                    <input
+                        placeholder="Search pQuora"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="search-bar"
+                    />
+                </div>
             </div>
             <div className="nav-right-side">
                 <div className="nav-ask-question">
