@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import ReactTooltip from "react-tooltip";
@@ -40,11 +40,12 @@ const NavBar = () => {
                     </Link>
                 </div>
             </div>
-            <div className="search-bar">
+            <div className="center-search-bar">
                 <input
                     placeholder="Enter your question"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
+                    className="search-bar"
                 />
             </div>
             <div className="nav-right-side">
