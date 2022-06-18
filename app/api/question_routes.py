@@ -38,8 +38,8 @@ def new_question():
         user_id = current_user.id
         content = form.data["content"]
         tag_id = form.data["tag_id"]
-        created_at = datetime.now()
-        updated_at = datetime.now()
+        created_at = datetime.utcnow()
+        updated_at = datetime.utcnow()
         
         new_question = Question(owner_id=user_id, content=content, tag_id=tag_id, created_at=created_at, updated_at=updated_at)
         
@@ -78,7 +78,7 @@ def edit_question(question_id):
         if form.validate_on_submit():
             question.content = form.data["content"]
             question.tag_id = form.data["tag_id"]
-            question.updated_at = datetime.now()
+            question.updated_at = datetime.utcnow()
             
             db.session.commit()
 

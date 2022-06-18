@@ -8,8 +8,8 @@ class Question(db.Model):
     content = db.Column(db.Text, nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     tag_id = db.Column(db.Integer, db.ForeignKey("tags.id"))
-    created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now(), onupdate=datetime.now)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow(), nullable=False)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow(), onupdate=datetime.utcnow)
 
     # Question-to-User: many-to-one
     user = db.relationship("User", back_populates="questions")
@@ -24,7 +24,7 @@ class Question(db.Model):
             'content': self.content,
             'owner_id': self.owner_id,
             'tag_id': self.tag_id,
-            'created_at': self.created_at.isoformat(),
-            'updated_at': self.updated_at.isoformat(),
+            'created_at': self.created_at.strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
+            'updated_at': self.updated_at.strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
             'owner_name': self.user.username, 
         }

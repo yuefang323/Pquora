@@ -28,15 +28,15 @@ def new_answer(questionId):
     if form.validate_on_submit():
         user_id = current_user.id
         content = form.data["content"]
-        created_at = datetime.now()
-        updated_at = datetime.now()
+        created_at = datetime.utcnow()
+        updated_at = datetime.utcnow()
         
         new_answer = Answer(user_id=user_id, content=content, question_id=questionId, created_at=created_at, updated_at=updated_at)
         
         db.session.add(new_answer)
         db.session.commit()
         updatedQuestion = Question.query.get(questionId)
-        updatedQuestion.updated_at = datetime.now()
+        updatedQuestion.updated_at = datetime.utcnow()
         db.session.commit()
         
         return {
@@ -69,9 +69,9 @@ def edit_answer(answerId):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         answer.content = form.data["content"]
-        answer.updated_at = datetime.now()
+        answer.updated_at = datetime.utcnow()
         updatedQuestion = Question.query.get(answer.question_id)
-        updatedQuestion.updated_at = datetime.now()
+        updatedQuestion.updated_at = datetime.utcnow()
         db.session.commit()
 
         return {
