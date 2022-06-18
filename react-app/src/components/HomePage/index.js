@@ -30,7 +30,8 @@ const HomePage = () => {
         let newArr = questionsOrdered.filter((question) =>
             question.content
                 .toLowerCase()
-                .includes(search.toLowerCase().trim().split(/\s+/))
+                // .includes(search.toLowerCase().trim().split(/\s+/))
+                .includes(search.toLowerCase().trim())
         );
         setArr(newArr);
     }, [search, questions]);
