@@ -82,6 +82,35 @@ def seed_answers():
         user_id='3', 
         question_id='10')     
     
+    a1_to_q4 = Answer(
+        content='No, I do not know that. It is amazing!!', 
+        user_id='1', 
+        question_id='4')   
+    
+    a2_to_q4 = Answer(
+        content="Really? That's interesting.", 
+        user_id='3', 
+        question_id='4')   
+    
+    a1_to_q7 = Answer(
+        content="Baby under 1 year old cannot eat any honey.", 
+        user_id='1', 
+        question_id='7')
+    
+    a2_to_q7 = Answer(
+        content="No. Baby cannot eat any honey until they reach at least 1 year old.", 
+        user_id='5', 
+        question_id='7')  
+    
+    a1_to_q11 = Answer(
+        content="Depends. Each baby is different.", 
+        user_id='1', 
+        question_id='11')      
+    
+    a2_to_q11 = Answer(
+        content="Yes. My son can walk at his 1st day in 10 month old.", 
+        user_id='3', 
+        question_id='11')      
     
 
     db.session.add(a1_to_q1)
@@ -100,8 +129,13 @@ def seed_answers():
     db.session.add(a1_to_q5)
     db.session.add(a2_to_q5)
     db.session.add(a1_to_q10)
+    db.session.add(a1_to_q4)
+    db.session.add(a2_to_q4)
+    db.session.add(a1_to_q7)
+    db.session.add(a2_to_q7)
+    db.session.add(a1_to_q11)
+    db.session.add(a2_to_q11)
         
-
     db.session.commit()
 
 
