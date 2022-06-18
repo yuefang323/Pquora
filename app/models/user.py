@@ -11,8 +11,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now(), onupdate=datetime.now)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow(), nullable=False)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow(), onupdate=datetime.utcnow)
 
     # User-to-Question: one-to-many
     questions = db.relationship("Question", back_populates="user", cascade="all, delete")
@@ -36,6 +36,6 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'created_at': self.created_at.isoformat(),
-            'updated_at': self.updated_at.isoformat(),
+            'created_at': self.created_at.strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
+            'updated_at': self.updated_at.strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
         }
