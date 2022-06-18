@@ -130,6 +130,6 @@ each of the following variables:
 | `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
 | `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
 | `heroku run -a <app name> flask db upgrade` | Run a command from within the deployed container on Heroku |
-| `heroku run -a <app name> flask db seed undo` | Run a command from within the deployed container on Heroku |
-| `heroku run -a <app name> flask db seed all` | Run a command from within the deployed container on Heroku |
+| `heroku run -a <app name> flask seed undo` | Run a command from within the deployed container on Heroku |
+| `heroku run -a <app name> flask seed all` | Run a command from within the deployed container on Heroku |
 | `heroku postgres remove` | Remove all db |
