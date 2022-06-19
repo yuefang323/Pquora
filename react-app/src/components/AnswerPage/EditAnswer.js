@@ -25,7 +25,7 @@ const EditAnswer = ({ setShowModal, answerId }) => {
             validateErrors.push(
                 "Answer content must be between 3 and 5000 characters."
             );
-        if (curAnswer.content === content.toLowerCase().trim())
+        if (curAnswer.content.trim() === content.toLowerCase().trim())
             validateErrors.push("The updated answer should be different.");
         if (validateErrors.length > 0) {
             setErrors(validateErrors);
