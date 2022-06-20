@@ -44,7 +44,7 @@ const DeleteQuestion = ({ setShowModal }) => {
                 Do you really want to delete this question? This action cannot
                 be undone.
             </h4>
-            <div> Your question: {content} </div>
+            {/* <div> Your question: {content} </div> */}
             <div className="form-buttons delete">
                 <button
                     className="cancel-add-btn delete"
