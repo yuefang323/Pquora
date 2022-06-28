@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import pic from "../../assets/about.png";
 import git from "../../assets/git-logo.png";
 import linkedin from "../../assets/linkedin-logo.png";
+import fang from "../../assets/fang.jpg";
+import angellist from "../../assets/angellist.png"
 
 const About = () => {
     // const user = useSelector((state) => state.session.user);
@@ -35,7 +37,7 @@ const About = () => {
                     <h2>Why pQuora exists</h2>
                     <p>
                         pQuora's mission is to share and grow parents or
-                        expectant parents the parenting knowledge. We want to
+                        expectant parents the parenting knowledge to raise infants. We want to
                         connect the people who have knowledge to the people who
                         need it, to bring together people with different
                         perspectives so they can understand each other better,
@@ -47,8 +49,8 @@ const About = () => {
                     <div className="about-cards">
                         <div className="about-photo">
                             <img
-                                src="https://t4.ftcdn.net/jpg/02/78/70/99/360_F_278709964_PhS3MsOE9udVYb5VCin1xCQJlm3HFb9V.jpg"
-                                alt="Fang"
+                                src={fang}
+                                alt="https://t4.ftcdn.net/jpg/02/78/70/99/360_F_278709964_PhS3MsOE9udVYb5VCin1xCQJlm3HFb9V.jpg"
                                 className="about-photo"
                             />
                         </div>
@@ -75,7 +77,18 @@ const About = () => {
                             >
                                 <img
                                     src={linkedin}
-                                    alt="Linked In"
+                                    alt="LinkedIn"
+                                    className="about-icon"
+                                />
+                            </a>
+                            <a
+                                href="https://yuefang323.github.io/"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <img
+                                    src={angellist}
+                                    alt="AngelList"
                                     className="about-icon"
                                 />
                             </a>

@@ -47,15 +47,6 @@
     padding-top: 20px;
     height: 25px;
 }
-/* div.center-search-bar {
-    box-sizing: border-box;
-    display: flex;
-    z-index: 0;
-    position: relative;
-    transition-duration: 180ms;
-    transition-timing-function: ease-in-out;
-    min-height: unset;
-} */
 
 .search-bar {
     border: none;
@@ -67,7 +58,7 @@
     border: solid; 
     border-color: var(--gray2);
     border-radius: 15px;
-    margin-left: -400px; 
+    margin-left: -350px; 
     width: 300px;
 }
 .search-icon {
