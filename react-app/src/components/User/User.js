@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
+
+import NavBar from '../NavBar';
 
 function User() {
   const [user, setUser] = useState({});
@@ -16,12 +18,12 @@ function User() {
     })();
   }, [userId]);
 
-  if (!user) {
-    return null;
-  }
+  if (!user) return <Redirect to="/" />;
 
   return (
-    <ul>
+    <div className="home-page-wrapper">
+    <NavBar />
+    <ul className="questions-list-content">
       <li>
         <strong>User Id</strong> {userId}
       </li>
@@ -32,6 +34,7 @@ function User() {
         <strong>Email</strong> {user.email}
       </li>
     </ul>
+    </div>
   );
 }
 export default User;

@@ -68,6 +68,16 @@ const NavBar = () => {
                 </div>
             </div>
             <div className="nav-right-side">
+                <div className="profile">
+                    <Link
+                        to="/users/:userId"
+                        exact="true"
+                        activeclassname="profile-btn"
+                        data-tip="User profile"
+                    >
+                        <i className="fa-solid fa-user fa-xl"></i>
+                    </Link>
+                </div>
                 <div className="nav-ask-question">
                     <AddQuestionModal />
                 </div>
