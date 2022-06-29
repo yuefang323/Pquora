@@ -1,0 +1,13 @@
+.box-word.profile {
+    /* background-color: aqua; */
+    cursor: pointer;
+	border: none;
+	text-decoration: none;
+}
+.box-word.profile:hover {
+    color: var(--red);
+	border-color: black;
+	transform: scale(1.02);
+	cursor: pointer;
+    border-radius: 5px;
+}

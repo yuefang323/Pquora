@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, NavLink, Redirect } from "react-router-dom";
 
@@ -8,6 +8,7 @@ import UpdatedAt from "../util/UpdatedAt";
 import AskModal from "./AskModal";
 
 import * as questionsActions from "../../store/questions";
+import { useSearch } from "../../context/Query";
 
 const HomePage = () => {
     // const [errors, setErrors] = useState([]);
@@ -17,12 +18,23 @@ const HomePage = () => {
     const questionsOrdered = questionsList.sort((a, b) =>
         b.updated_at.localeCompare(a.updated_at)
     );
-
     const dispatch = useDispatch();
+    const { search } = useSearch();
+    const [arr, setArr] = useState([]);
 
     useEffect(() => {
         dispatch(questionsActions.getAllQuestions());
     }, [dispatch]);
+
+    useEffect(() => {
+        let newArr = questionsOrdered.filter((question) =>
+            question.content
+                .toLowerCase()
+                // .includes(search.toLowerCase().trim().split(/\s+/))
+                .includes(search.toLowerCase().trim())
+        );
+        setArr(newArr);
+    }, [search, questions]);
 
     if (!user) return <Redirect to="/" />;
 
@@ -32,7 +44,9 @@ const HomePage = () => {
             <div className="questions-list-content">
                 <div className="question-box">
                     <p>Hi, {user.username}</p>
-                    <h2 className="box-word">What do you want to ask or share?</h2>
+                    <h2 className="box-word">
+                        What do you want to ask or share?
+                    </h2>
                     <div className="home-ask-answer-btns">
                         <div className="nav-ask-question">
                             <AskModal />
@@ -82,12 +96,14 @@ const HomePage = () => {
                         </button>
                     </div>
                 </div>
-                {questionsOrdered.map((obj) => (
+                {arr.map((obj) => (
                     <div
                         key={"question" + obj.id}
                         className="home-question-item"
                     >
-                        <p className="question-owner">Ask by: {obj.owner_name}</p>
+                        <p className="question-owner">
+                            Ask by: {obj.owner_name}
+                        </p>
                         <NavLink
                             to={`/questions/${obj.id}`}
                             exact={true}
