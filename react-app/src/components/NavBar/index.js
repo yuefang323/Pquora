@@ -70,7 +70,7 @@ const NavBar = () => {
             <div className="nav-right-side">
                 <div className="profile">
                     <Link
-                        to="/users/:userId"
+                        to="/profile"
                         exact="true"
                         activeclassname="profile-btn"
                         data-tip="User profile"
