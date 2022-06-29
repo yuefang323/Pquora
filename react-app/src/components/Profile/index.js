@@ -22,7 +22,7 @@ function User() {
     const [arr, setArr] = useState([]);
     const [aarr, setAarr] = useState([]);
 
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState("questions");
 
     useEffect(() => {
         async function fetchData() {
@@ -33,8 +33,8 @@ function User() {
         }
         fetchData();
     }, [userId]);
-    console.log(questions, "......");
-    console.log(answers, "xxxxxxxxxx");
+    // console.log(questions, "......");
+    // console.log(answers, "xxxxxxxxxx");
 
     useEffect(() => {
         let newArr = questionsOrdered.filter((question) =>
@@ -58,16 +58,15 @@ function User() {
             <div className="questions-list-content">
                 <div className="question-box">
                     <p>Hi, {user.username}! You have</p>
-                    <h2 className="box-word" onClick={() => setShow(true)}>
+                    <h2 className="box-word profile" onClick={() => setShow("questions")}>
                         {questions.length} questions
-                        {/* {questions.length} questions | {answers.length} answers */}
                     </h2>
-                    <h2 className="box-word" onClick={() => setShow(true)}>
+                    <h2 className="box-word profile" onClick={() => setShow("answers")}>
                         {answers.length} answers{" "}
                     </h2>
                 </div>
-                {show && <UserQuestions arr={arr} setShow={setShow} />}
-                {show && <UserAnswers aarr={aarr} setShow={setShow} />}
+                {show === "questions" && <UserQuestions arr={arr} />}
+                {show === "answers" && <UserAnswers aarr={aarr} />}
             </div>
         </div>
     );

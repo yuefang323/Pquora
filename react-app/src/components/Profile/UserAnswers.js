@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import CreatedAt from "../util/CreatedAt";
 import UpdatedAt from "../util/UpdatedAt";
 
-function UserAnswers({ setShow, aarr }) {
+function UserAnswers({ onclose, aarr }) {
     return (
         <>
         {aarr.map((obj) => (

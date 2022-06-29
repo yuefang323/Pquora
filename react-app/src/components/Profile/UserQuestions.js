@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import CreatedAt from "../util/CreatedAt";
 import UpdatedAt from "../util/UpdatedAt";
 
-function UserQuestions({ setShow, arr }) {
+function UserQuestions({ arr }) {
     return (
         <>
         {arr.map((obj) => (
