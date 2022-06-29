@@ -112,5 +112,3 @@ npm start
 # Future Features
 
 -   Tags feature
--   Search feature
--   User profile
