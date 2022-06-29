@@ -99,11 +99,19 @@ npm start
   
 ### Home Page
 
-![home-page](https://user-images.githubusercontent.com/94598069/173951575-4c8773f9-faaf-46ed-8600-4297224e3b82.png)
+![Home](https://user-images.githubusercontent.com/94598069/176554323-c38e1c4f-c40b-424e-82fd-47e7f67bb670.png)
 
 ### Question Page
 
-![question_page](https://user-images.githubusercontent.com/94598069/173951648-7c987ea7-aff3-4e4c-a8c6-974984b9d0f0.png)
+![question_page](https://user-images.githubusercontent.com/94598069/176554382-cd03ba87-bbca-4701-a11d-9bf3c2c0b765.png)
+  
+### Questions to Answer Page
+
+![questions_to_answer_page](https://user-images.githubusercontent.com/94598069/176554461-47f32bcc-fd9a-4da0-b104-1aec6c346546.png)
+
+### User Profile
+
+![user_profile](https://user-images.githubusercontent.com/94598069/176554600-bbb04657-b15e-4739-9aff-80a54b5e381d.png)
 
 ### About Page
 
