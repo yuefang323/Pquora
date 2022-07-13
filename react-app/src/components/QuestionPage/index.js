@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 
 import NavBar from "../NavBar";
 import * as answersActions from "../../store/answers";
 import * as questionsActions from "../../store/questions";
+import { useSearch } from "../../context/Query";
 
 import EditQuestionModal from "./EditQuestionModal";
 import DeleteQuestionModal from "./DeleteQuestionModal";
@@ -30,6 +31,9 @@ const QuestionPage = () => {
     const answersOrdered = answersList.sort((a, b) =>
         b.updated_at.localeCompare(a.updated_at)
     );
+    const { search } = useSearch();
+    const [aarr, setAarr] = useState([]);
+
     const qOwnerId = questions[questionId]?.owner_id;
     // console.log("xxxxxx", questionContent)
 
@@ -43,6 +47,14 @@ const QuestionPage = () => {
         }
         // if (!questionContent) history.push("/notfound")
     }, [questionId, dispatch]);
+
+    useEffect(() => {
+        let newAarr = answersOrdered.filter((answer) =>
+            answer.content.toLowerCase().includes(search.toLowerCase().trim())
+        );
+        setAarr(newAarr);
+    }, [search, answers]);
+
     if (!questionContent)
         return (
             // <Redirect to="/not-found" />
@@ -77,7 +89,7 @@ const QuestionPage = () => {
                     )}
                 </div>
                 <div className="answers-lit">
-                    {answersOrdered.map((obj) => (
+                    {aarr.map((obj) => (
                         <div
                             key={"answer" + obj.id}
                             className="home-question-item"

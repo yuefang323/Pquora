@@ -56,7 +56,7 @@ const HomePage = () => {
                                 to="/questions"
                                 exact="true"
                                 className="ask-answer-btn"
-                                target="_blank"
+                                // target="_blank"
                                 id="aa-btn"
                             >
                                 <svg
@@ -91,7 +91,7 @@ const HomePage = () => {
                                         ></path>
                                     </g>
                                 </svg>
-                                <div className="ask-answer-word">Answer</div>
+                                <div className="ask-answer-word">Questions to Answer</div>
                             </Link>
                         </button>
                     </div>

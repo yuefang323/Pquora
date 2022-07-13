@@ -26,7 +26,7 @@ const NavBar = () => {
                         to="/questions"
                         exact={true}
                         activeClassName="active-home-answer-btn"
-                        data-tip="Answers"
+                        data-tip="Questions to Answer"
                     >
                         <i className="fa-regular fa-pen-to-square fa-xl"></i>
                     </NavLink>
