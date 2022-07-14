@@ -73,3 +73,13 @@ button:hover {
 .cancel-add-btn.delete {
     width: 60px;
 }
+.answer-btn.cloud {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+span.cloud-emoji {
+    font-size:25px; 
+}

@@ -11,9 +11,9 @@ const AddAnswerModal = () => {
             <div className="add-new-question-wrapper">
                 <button
                     onClick={() => setShowModal(true)}
-                    className="answer-btn"
+                    className="answer-btn cloud"
                 >
-                    💬 Answer
+                    <span className="cloud-emoji">💬</span>Answer
                 </button>
             </div>
             {showModal && (
