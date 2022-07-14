@@ -48,7 +48,7 @@ const AskModal = () => {
                             ></path>
                         </g>
                     </svg>
-                    <div className="ask-answer-word">Ask</div>
+                    <div className="ask-answer-word">Ask a Question</div>
                 </button>
             </div>
             {showModal && (

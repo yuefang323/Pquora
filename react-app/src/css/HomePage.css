@@ -39,6 +39,7 @@ p.question-detail {
 }
 p.question-detail:hover {
     color: var(--red);
+    transform: scale(1.04);
 }
 .idyRmA svg {
     width: 30px;
