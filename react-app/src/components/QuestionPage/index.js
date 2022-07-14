@@ -120,7 +120,7 @@ const QuestionPage = () => {
                         </div>
                     ))}
                 </div>
-                <div className="edit-delete-question-btn">
+                {aarr.length >= 1 && <div className="edit-delete-question-btn">
                     {qOwnerId !== user?.id && <AddAnswerModal />}
                     {qOwnerId === user?.id && (
                         <div className="edit-and-delete-btns">
@@ -128,7 +128,7 @@ const QuestionPage = () => {
                             <DeleteQuestionModal />
                         </div>
                     )}
-                </div>
+                </div>}
             </div>
         </div>
     );
