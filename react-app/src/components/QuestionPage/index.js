@@ -120,6 +120,15 @@ const QuestionPage = () => {
                         </div>
                     ))}
                 </div>
+                <div className="edit-delete-question-btn">
+                    {qOwnerId !== user?.id && <AddAnswerModal />}
+                    {qOwnerId === user?.id && (
+                        <div className="edit-and-delete-btns">
+                            <EditQuestionModal />
+                            <DeleteQuestionModal />
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
