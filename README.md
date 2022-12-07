@@ -2,7 +2,7 @@
 
 <h3 align="center">A Place where just you and a handful of parents can ask questions and exchange experience in the journey of raising infants. It is inspired by <a href="https://www.quora.com/">Quora<a>.</h3>
 
-<p align="center"><a  href="https://pquora.herokuapp.com/">pQuora Live Demo</a></p>
+<p align="center"><a  href="https://pquora.onrender.com/">pQuora Live Demo</a></p>
 
 # Technologies Used
 
