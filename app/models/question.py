@@ -1,13 +1,17 @@
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
 
 class Question(db.Model):
     __tablename__ = 'questions'
     
+    # add to every model file under __table_name__
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+    
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text, nullable=False)
-    owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    tag_id = db.Column(db.Integer, db.ForeignKey("tags.id"))
+    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    tag_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("tags.id")))
     created_at = db.Column(db.DateTime, default=datetime.utcnow(), nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow(), onupdate=datetime.utcnow)
 
